@@ -1,0 +1,5 @@
+[user]
+  name=Tom Henighan
+  email=henighan.2@gmail.com
+[merge]
+  tool=vimdiff
