@@ -23,6 +23,10 @@ Plugin 'tpope/vim-fugitive'
 " powerline, a cool status bar
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'benmills/vimux'
+" Plugin 'julienr/vimux-pyutils'
+Plugin 'julienr/vim-cellmode'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'cjrh/vim-conda'
 " Plugin 'powerline/powerline'
 " Plugin from https://github.com/scrooloose/sytastic
 " Plugin 'scrooloose/syntastic'
@@ -69,12 +73,24 @@ filetype plugin indent on    " required
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_check_on_wq = 0
 
+" some stuff to get conda-vim to work
+let g:jedi#force_py_version = 2
+let g:UltisnipsUsePythonVersion = 2
+
 " Settings for powerline
 set laststatus=2 " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
 " let g:Powerline_symbols = 'fancy'
 
+" so things are copied to system clipboard
+set clipboard=unnamed
+
+" use jj as <esc> alternative for exiting insert mode
+inoremap jj <Esc>
+
+" make backspace work right
+set backspace=indent,eol,start
 
 colo default
 syntax enable
@@ -97,7 +113,9 @@ command! Make call VimuxRunCommandInDir("cd ../build && make", 0)
 " run catkin_make in rodan_ws with vimux
 command! RosMake call VimuxRunCommand("cd $WSRODAN && catkin_make -j1")
 " run current python script with vimux
-command! Pyrun call VimuxRunCommand("python " . bufname("%"))
+command! Pyrun call VimuxRunCommandInDir("python " . bufname("%"),0)
+" start ipython session in current directory
+command! Ipython call VimuxRunCommandInDir("ipython", 0)
 "initializes an xml file
 nnoremap ,xml :-1read $HOME/.vim/.xml_skeleton.xml<CR>ji
 " inserts an xml comment
@@ -108,6 +126,8 @@ nnoremap ,xcl I<!-- <Esc>A --><Esc>
 nnoremap ,uxc w?<!--<CR>dw/--><CR>dw
 " initializes python file
 nnoremap ,py :-1read $HOME/.vim/.python_skeleton.py<CR>:4<CR>i
+" initializes bash file
+nnoremap ,sh :-1read $HOME/.vim/.bash_skeleton.sh<CR>:3<CR>i
 " initializes rospy file
 nnoremap ,rpy :-1read $HOME/.vim/.rospy_skeleton.py<CR>:4<CR>i
 
@@ -126,8 +146,8 @@ set number tabstop=2
 set softtabstop=2
 set shiftround
 " set the mapleader key, so now q can act like a second control
-let mapleader = "q"
-" for example, qo will now enclose stuff in < />
+let mapleader = ","
+" for example, <leader>o will now enclose stuff in < />
 inoremap <Leader>o <Esc>I<<Esc>A/><CR>
 " makes inline xml tag
 inoremap <Leader>h <Esc>yyppkkI<<Esc>A><Esc>jI<tab><Esc>ld$jI</<Esc>ea> <Esc>DkA
