@@ -26,7 +26,7 @@ Plugin 'benmills/vimux'
 " Plugin 'julienr/vimux-pyutils'
 Plugin 'julienr/vim-cellmode'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'cjrh/vim-conda'
+" Plugin 'cjrh/vim-conda'
 " Plugin 'powerline/powerline'
 " Plugin from https://github.com/scrooloose/sytastic
 " Plugin 'scrooloose/syntastic'
