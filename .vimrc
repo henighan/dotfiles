@@ -26,7 +26,14 @@ Plugin 'benmills/vimux'
 " Plugin 'julienr/vimux-pyutils'
 Plugin 'julienr/vim-cellmode'
 Plugin 'davidhalter/jedi-vim'
-" Plugin 'cjrh/vim-conda'
+if has("unix")
+  " echo "unix"
+  let s:uname = system("uname -s")
+  if s:uname == "Darwin\n"
+    " echo "OSX"
+    Plugin 'cjrh/vim-conda'
+  endif
+endif
 " Plugin 'powerline/powerline'
 " Plugin from https://github.com/scrooloose/sytastic
 " Plugin 'scrooloose/syntastic'
@@ -208,3 +215,5 @@ vmap ,} c{}<Esc>Pl
 vmap ' c''<Esc>Pl
 vmap ' c''<Esc>Pl
 vmap ,xc c<!--  --><Esc>hhhPllll
+
+
