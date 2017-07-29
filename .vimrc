@@ -80,6 +80,8 @@ filetype plugin indent on    " required
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_check_on_wq = 0
 
+let g:cellmode_tmux_panenumber='1'
+
 " some stuff to get conda-vim to work
 let g:jedi#force_py_version = 2
 let g:UltisnipsUsePythonVersion = 2
