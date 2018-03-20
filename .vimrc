@@ -26,14 +26,14 @@ Plugin 'benmills/vimux'
 " Plugin 'julienr/vimux-pyutils'
 Plugin 'julienr/vim-cellmode'
 Plugin 'davidhalter/jedi-vim'
-if has("unix")
-  " echo "unix"
-  let s:uname = system("uname -s")
-  if s:uname == "Darwin\n"
-    " echo "OSX"
-    Plugin 'cjrh/vim-conda'
-  endif
-endif
+" if has("unix")
+"   " echo "unix"
+"   let s:uname = system("uname -s")
+"   if s:uname == "Darwin\n"
+"     " echo "OSX"
+"     Plugin 'cjrh/vim-conda'
+"   endif
+" endif
 " Plugin 'powerline/powerline'
 " Plugin from https://github.com/scrooloose/sytastic
 " Plugin 'scrooloose/syntastic'
@@ -70,27 +70,12 @@ filetype plugin indent on    " required
 """""""""""""""""""" End Vundle Stuff """"""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Settings for sytastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" 
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
 let g:cellmode_tmux_panenumber='1'
-
-" some stuff to get conda-vim to work
-let g:jedi#force_py_version = 2
-let g:UltisnipsUsePythonVersion = 2
 
 " Settings for powerline
 set laststatus=2 " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
-" let g:Powerline_symbols = 'fancy'
 
 " so things are copied to system clipboard
 set clipboard=unnamed
@@ -103,13 +88,8 @@ set backspace=indent,eol,start
 
 colo default
 syntax enable
-"set wildmode=longest,list,full
 " wildmenu gives you tab completion on commands
 set wildmenu
-" appends path with basically everythin (I think)
-set path +=**
-"command MakeTags !ctags -R .
-" netrw lets you browse files when you open a new file in vim :e .
 let g:netrw_banner=0 " disable annoying banner
 " reload my vimrc
 command! Vimrc execute "so $MYVIMRC"
@@ -149,11 +129,10 @@ nnoremap k gk
 "inoremap <C-l> <Esc>yyppkkI<<Esc>A><Esc>jI<tab><Esc>ld$jI</<Esc>ea> <Esc>DkA
 "will show what I'm typing in lower left
 set showcmd
-" tab stuff
-set expandtab shiftwidth=2
-set number tabstop=2
-set softtabstop=2
-set shiftround
+set autoindent
+set  tabstop=4
+set shiftwidth=4
+set expandtab
 " set the mapleader key, so now q can act like a second control
 let mapleader = ","
 " for example, <leader>o will now enclose stuff in < />
@@ -170,12 +149,8 @@ inoremap <Leader>c <Esc>I<!-- <Esc>A --><Esc>
 set foldmethod=indent
 set foldlevel=99
 
-" bind ctrl+movement for moving around windows
-" instead of ctrl+w + <movement>
-" map <c-h> <c-w>h
-" map <c-j> <c-w>j
-" map <c-k> <c-w>k
-" map <c-l> <c-w>l
+" set pastetoggle to ,p
+set pastetoggle=<leader>p
 
 " more intuitive splits
 map <c-w>\ <c-w>v<c-w>l
@@ -185,23 +160,12 @@ map <c-w>- <c-w>s<c-w>j
 set colorcolumn=80
 highlight ColorColumn ctermbg=4
 
-" here I just autoclose brackets
-" inoremap ( ()<Esc>i
-" inoremap " ""<Esc>i
-" inoremap ' ''<Esc>i
-" inoremap { {}<Esc>i
-" inoremap [ []<Esc>i
-
 " execute the python file I'm editing
 command! Python !python %
 " auto indent
 set smartindent
 
 inoremap <Leader>l <C-o>l
-set tags+=$HOME/rodan_ws/src/rodan.tags
-set tags+=/usr/include/OGRE/OGRE.tags
-set tags+=/usr/include/eigen3/Eigen/src/eigen.tags
-set tags+=~/pcl/pcl.tags
 
 " set .launch syntax to xml
 au BufNewFile,BufRead *.launch set filetype=xml
@@ -217,5 +181,3 @@ vmap ,} c{}<Esc>Pl
 vmap ' c''<Esc>Pl
 vmap ' c''<Esc>Pl
 vmap ,xc c<!--  --><Esc>hhhPllll
-
-
