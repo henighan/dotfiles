@@ -97,28 +97,14 @@ command! Vimrc execute "so $MYVIMRC"
 command! Name execute "echo @%"
 " close buffer without closing window
 command! Close execute "b#|bd#"
-" run make in ../build with vimux
-command! Make call VimuxRunCommandInDir("cd ../build && make", 0)
-" run catkin_make in rodan_ws with vimux
-command! RosMake call VimuxRunCommand("cd $WSRODAN && catkin_make -j1")
 " run current python script with vimux
 command! Pyrun call VimuxRunCommandInDir("python " . bufname("%"),0)
 " start ipython session in current directory
 command! Ipython call VimuxRunCommandInDir("ipython", 0)
-"initializes an xml file
-nnoremap ,xml :-1read $HOME/.vim/.xml_skeleton.xml<CR>ji
-" inserts an xml comment
-nnoremap ,xcmm i <!--  --><Esc>hhhi
-" xml comments out current line
-nnoremap ,xcl I<!-- <Esc>A --><Esc>
-" removes xml comments
-nnoremap ,uxc w?<!--<CR>dw/--><CR>dw
 " initializes python file
 nnoremap ,py :-1read $HOME/.vim/.python_skeleton.py<CR>:4<CR>i
 " initializes bash file
 nnoremap ,sh :-1read $HOME/.vim/.bash_skeleton.sh<CR>:3<CR>i
-" initializes rospy file
-nnoremap ,rpy :-1read $HOME/.vim/.rospy_skeleton.py<CR>:4<CR>i
 
 " make Y behave like other capital letters
 map Y y$
@@ -180,4 +166,3 @@ vmap ,{ c{}<Esc>Pl
 vmap ,} c{}<Esc>Pl
 vmap ' c''<Esc>Pl
 vmap ' c''<Esc>Pl
-vmap ,xc c<!--  --><Esc>hhhPllll
