@@ -18,25 +18,36 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
+" For rendering markdown in a browser
+Plugin 'JamshedVesuna/vim-markdown-preview'
+let vim_markdown_preview_github=1
+let vim_markdown_preview_browser='Google Chrome'
 " for interacting with git
 Plugin 'tpope/vim-fugitive'
+" for easy surrounding with quotes, tags
+Plugin 'tpope/vim-surround'
 " powerline, a cool status bar
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'benmills/vimux'
 " Plugin 'julienr/vimux-pyutils'
 Plugin 'julienr/vim-cellmode'
 Plugin 'davidhalter/jedi-vim'
-" if has("unix")
-"   " echo "unix"
-"   let s:uname = system("uname -s")
-"   if s:uname == "Darwin\n"
-"     " echo "OSX"
-"     Plugin 'cjrh/vim-conda'
-"   endif
-" endif
+let g:jedi#force_py_version=3
 " Plugin 'powerline/powerline'
 " Plugin from https://github.com/scrooloose/sytastic
-" Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
+" syntastic recommended settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" Use pylint for syntax checking
+let g:syntastic_mode_map = { 'mode': 'passive' }
+let g:syntastic_python_checkers = ['pylint']
+" let g:syntastic_python_pylint_exec = '/usr/local/bin/pylint'
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
 " Git plugin not hosted on GitHub
