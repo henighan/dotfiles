@@ -36,6 +36,7 @@ let g:jedi#force_py_version=3
 " Plugin 'powerline/powerline'
 " Plugin from https://github.com/scrooloose/sytastic
 Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
 " syntastic recommended settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
