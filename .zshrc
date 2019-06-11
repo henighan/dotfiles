@@ -90,3 +90,6 @@ export PATH=/Users/tom/bin:/Users/tom/Library/Python/3.6/bin:$PATH
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+alias ipython="ipython --matplotlib tk"
+export PATH=$HOME/bin:$PATH
