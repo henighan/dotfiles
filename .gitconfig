@@ -1,5 +1,10 @@
 [user]
   name=Tom Henighan
   email=henighan.2@gmail.com
+[core]
+	editor = /usr/bin/vim
+	excludesfile = /Users/tom/.gitignore
+[diff]
+    tool = vimdiff
 [merge]
-  tool=vimdiff
+	tool = vimdiff
