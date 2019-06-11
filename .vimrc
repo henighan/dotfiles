@@ -20,7 +20,7 @@ Plugin 'VundleVim/Vundle.vim'
 " plugin on GitHub repo
 " For rendering markdown in a browser
 Plugin 'JamshedVesuna/vim-markdown-preview'
-let vim_markdown_preview_github=1
+let vim_markdown_preview_github=1 " ctrl-p
 let vim_markdown_preview_browser='Google Chrome'
 " for interacting with git
 Plugin 'tpope/vim-fugitive'
@@ -82,7 +82,7 @@ filetype plugin indent on    " required
 """""""""""""""""""" End Vundle Stuff """"""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:cellmode_tmux_panenumber='1'
+let g:cellmode_tmux_panenumber='2'
 
 " Settings for powerline
 set laststatus=2 " Always show the statusline
