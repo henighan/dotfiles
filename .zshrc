@@ -92,4 +92,5 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 alias ipython="ipython --matplotlib tk"
+alias github='open -a "Google Chrome" https://github.com'
 export PATH=$HOME/bin:$PATH
