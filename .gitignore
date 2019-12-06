@@ -4,3 +4,6 @@
 Session.vim
 .netrwhist
 *~
+.DS_Store
+*poop.py
+*pee.py
