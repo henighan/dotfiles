@@ -24,10 +24,20 @@ let vim_markdown_preview_github=1 " ctrl-p
 let vim_markdown_preview_browser='Google Chrome'
 " for interacting with git
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
 " for easy surrounding with quotes, tags
 Plugin 'tpope/vim-surround'
 " powerline, a cool status bar
-Plugin 'Lokaltog/vim-powerline'
+" Plugin 'Lokaltog/vim-powerline'
+Plugin 'vim-airline/vim-airline'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline#extensions#branch#displayed_head_limit = 7
+let g:airline_skip_empty_sections = 1
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+Plugin 'moll/vim-bbye'
+Plugin 'junegunn/gv.vim'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'benmills/vimux'
 " Plugin 'julienr/vimux-pyutils'
 Plugin 'julienr/vim-cellmode'
@@ -37,6 +47,7 @@ let g:jedi#force_py_version=3
 " Plugin from https://github.com/scrooloose/sytastic
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
+Plugin 'python/black'
 " syntastic recommended settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -45,6 +56,7 @@ set statusline+=%*
 " let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:black_linelength = 88
 " Use pylint for syntax checking
 let g:syntastic_mode_map = { 'mode': 'passive' }
 let g:syntastic_python_checkers = ['pylint']
@@ -107,8 +119,8 @@ let g:netrw_banner=0 " disable annoying banner
 command! Vimrc execute "so $MYVIMRC"
 " Give name of file
 command! Name execute "echo @%"
-" close buffer without closing window
-command! Close execute "b#|bd#"
+" close buffer without closing window - supercede by Bdelete
+" command! Close execute "b#|bd#"
 " run current python script with vimux
 command! Pyrun call VimuxRunCommandInDir("python " . bufname("%"),0)
 " start ipython session in current directory
