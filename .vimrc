@@ -48,6 +48,8 @@ let g:jedi#force_py_version=3
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'python/black'
+Plugin 'junegunn/fzf', { 'do': './install --bin' }
+Plugin 'junegunn/fzf.vim'
 " syntastic recommended settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -159,7 +161,12 @@ inoremap <Leader>c <Esc>I<!-- <Esc>A --><Esc>
 set foldmethod=indent
 set foldlevel=99
 
+" fzf
+let $FZF_DEFAULT_OPTS = '--reverse'
+command! -bang -nargs=? -complete=dir PFiles
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 " set pastetoggle to ,p
+
 set pastetoggle=<leader>p
 
 " more intuitive splits
