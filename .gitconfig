@@ -2,7 +2,7 @@
   name=Tom Henighan
   email=henighan.2@gmail.com
 [core]
-	editor = /usr/bin/vim
+	editor = /usr/local/bin/vim
 	excludesfile = /Users/henighan/.gitignore
 [diff]
     tool = vimdiff
