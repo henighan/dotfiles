@@ -1,55 +1,50 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""" Vundle Stuff """"""""""""""""""""""""""""""
+""""""""""" Plugin Stuff """"""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " disable ancient vi compatibility
 set nocompatible
 filetype off " required, will fix shortly
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
 " For rendering markdown in a browser
-Plugin 'JamshedVesuna/vim-markdown-preview'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
+let g:pydocstring_formatter='sphinx'
 let vim_markdown_preview_github=1 " ctrl-p
 let vim_markdown_preview_browser='Google Chrome'
 " for interacting with git
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rhubarb'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 " for easy surrounding with quotes, tags
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " powerline, a cool status bar
-" Plugin 'Lokaltog/vim-powerline'
-Plugin 'vim-airline/vim-airline'
+" Plug 'Lokaltog/vim-powerline'
+Plug 'vim-airline/vim-airline'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline#extensions#branch#displayed_head_limit = 7
 let g:airline_skip_empty_sections = 1
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-Plugin 'moll/vim-bbye'
-Plugin 'junegunn/gv.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'benmills/vimux'
-" Plugin 'julienr/vimux-pyutils'
-Plugin 'julienr/vim-cellmode'
-Plugin 'davidhalter/jedi-vim'
+" :Bdelete
+Plug 'moll/vim-bbye'
+Plug 'junegunn/gv.vim'
+" show git +/-/~ in gutter
+Plug 'airblade/vim-gitgutter'
+Plug 'benmills/vimux'
+" Plug 'julienr/vimux-pyutils'
+Plug 'julienr/vim-cellmode'
+Plug 'davidhalter/jedi-vim'
 let g:jedi#force_py_version=3
-" Plugin 'powerline/powerline'
-" Plugin from https://github.com/scrooloose/sytastic
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdtree'
-Plugin 'python/black'
-Plugin 'junegunn/fzf', { 'do': './install --bin' }
-Plugin 'junegunn/fzf.vim'
+" Plug 'powerline/powerline'
+" Plug from https://github.com/scrooloose/sytastic
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree'
+" Plug 'python/black'
+Plug 'psf/black', { 'tag': '19.10b0' }
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 " syntastic recommended settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -62,38 +57,18 @@ let g:black_linelength = 88
 " Use pylint for syntax checking
 let g:syntastic_mode_map = { 'mode': 'passive' }
 let g:syntastic_python_checkers = ['pylint']
+" let g:syntastic_python_pylint_args = '-E'
 " let g:syntastic_python_pylint_exec = '/usr/local/bin/pylint'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-"Plugin 'ascenator/L9', {'name': 'newL9'}
+" snippets
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" for jumping between sections of the snippet
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just
-" :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to
-" auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" Initialize plugin system
+call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""" End Vundle Stuff """"""""""""""""""""""""""""""""
+"""""""""""""""""""" End Plugin Stuff """"""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:cellmode_tmux_panenumber='2'
@@ -131,6 +106,10 @@ command! Ipython call VimuxRunCommandInDir("ipython", 0)
 nnoremap ,py :-1read $HOME/.vim/.python_skeleton.py<CR>:4<CR>i
 " initializes bash file
 nnoremap ,sh :-1read $HOME/.vim/.bash_skeleton.sh<CR>:3<CR>i
+" python print variable
+nnoremap <Leader>w yiwoprint("<Esc>pa", <Esc>pa)<Esc>
+" break out definition of kwarg
+nnoremap <Leader>b byt,[(O<Esc>p^f=cl = <Esc>bb<c-o>yiwf=pldt,[(k$
 
 " make Y behave like other capital letters
 map Y y$
