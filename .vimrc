@@ -167,12 +167,11 @@ inoremap <Leader>l <C-o>l
 au BufNewFile,BufRead *.launch set filetype=xml
 
 " Enclose stuff in visual mode
-vmap ," c""<Esc>Pl
 vmap ,) c()<Esc>Pl
-vmap ,( c()<Esc>Pl
-vmap ,[ c[]<Esc>Pl
+vmap ,( c()<Esc>Pl%
 vmap ,] c[]<Esc>Pl
-vmap ,{ c{}<Esc>Pl
+vmap ,[ c[]<Esc>Pl%
 vmap ,} c{}<Esc>Pl
+vmap ,{ c{}<Esc>Pl%
 vmap ' c''<Esc>Pl
-vmap ' c''<Esc>Pl
+vmap ," c""<Esc>Pl
