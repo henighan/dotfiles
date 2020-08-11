@@ -41,8 +41,9 @@ let g:jedi#force_py_version=3
 " Plug from https://github.com/scrooloose/sytastic
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
-" Plug 'python/black'
-Plug 'psf/black', { 'tag': '19.10b0' }
+Plug 'python/black'
+" Plug 'psf/black', { 'tag': '19.10b0' }
+" let g:black_virtualenv='/Users/henighan/miniconda3/envs/py375'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 " syntastic recommended settings
@@ -54,6 +55,7 @@ set statusline+=%*
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:black_linelength = 88
+autocmd BufWritePost *.py silent! execute ':Black'
 " Use pylint for syntax checking
 let g:syntastic_mode_map = { 'mode': 'passive' }
 let g:syntastic_python_checkers = ['pylint']
