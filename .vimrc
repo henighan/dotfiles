@@ -39,13 +39,7 @@ Plug 'davidhalter/jedi-vim'
 let g:jedi#force_py_version=3
 " Plug 'powerline/powerline'
 " Plug from https://github.com/scrooloose/sytastic
-Plug 'scrooloose/syntastic'
-Plug 'scrooloose/nerdtree'
-Plug 'python/black'
-" Plug 'psf/black', { 'tag': '19.10b0' }
-" let g:black_virtualenv='/Users/henighan/miniconda3/envs/py375'
-Plug 'junegunn/fzf', { 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
+" Plug 'scrooloose/syntastic'
 " syntastic recommended settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -54,8 +48,17 @@ set statusline+=%*
 " let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" ale syntax checker, way better than sytastic
+Plug 'w0rp/ale'
+let g:ale_linters = {'python': ['pylint']}
+Plug 'scrooloose/nerdtree'
+Plug 'python/black'
+" Plug 'psf/black', { 'tag': '19.10b0' }
+" let g:black_virtualenv='/Users/henighan/miniconda3/envs/py375'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 let g:black_linelength = 88
-autocmd BufWritePost *.py silent! execute ':Black'
+" autocmd BufWritePost *.py silent! execute ':Black'
 " Use pylint for syntax checking
 let g:syntastic_mode_map = { 'mode': 'passive' }
 let g:syntastic_python_checkers = ['pylint']
@@ -66,6 +69,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " for jumping between sections of the snippet
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+Plug 'tell-k/vim-autoflake'
 
 " Initialize plugin system
 call plug#end()
@@ -79,6 +83,7 @@ let g:cellmode_tmux_panenumber='2'
 set laststatus=2 " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
+set ttyfast " helps window not get screwed up when changing tmux panes
 
 " so things are copied to system clipboard
 set clipboard=unnamed
