@@ -117,9 +117,14 @@ alias p='echo python `find . -name \*.py | fzf` | sendkeys'
 # framerate of a video
 alias framerate='ffprobe -v 0 -of compact=p=0 -select_streams 0 -show_entries stream=r_frame_rate'
 
+### Functions
 mcd () {
     mkdir -p $1
     cd $1
+}
+
+mit () {
+    git commit -m "$*"
 }
 
 # source fzf key bindings
