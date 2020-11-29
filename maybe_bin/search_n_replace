@@ -1,0 +1,5 @@
+#! /bin/bash
+
+# original: find . -type f -name "*.py" -print0 | xargs -0 sed -i '' -e 's/from foresight\.training import factories/from foresight import factories/g'
+
+find . -type f -name "*.py" -print0 | xargs -0 sed -i '' -e "s/$1/$2/g"

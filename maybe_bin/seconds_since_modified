@@ -1,0 +1,2 @@
+#!/bin/sh
+echo $(( $(date +%s) - $(stat -f%c $1) ))
