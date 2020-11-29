@@ -80,8 +80,8 @@ alias oneline='tr '"'"'\n'"'"' '"'"' '"'"''
 # send command to tmux prompt, requires replacing space with the word "Space"
 alias sendkeys='tr '"'"' '"'"' '"'"' Space '"'"' | xargs -0 tmux send-keys'
 # sendkeys version of the above fzf git things, so they show up in my history
-alias fa='echo git add `git ls-files -m -o --exclude-standard | fzf -m | oneline` | sendkeys'
-alias fr='echo git checkout `git ls-files -m --exclude-standard | fzf -m | oneline` | sendkeys'
+alias fa='git ls-files -m -o --exclude-standard | fzf -m | oneline | xargs echo "git add $*" | sendkeys'
+alias fr='git ls-files -m --exclude-standard | fzf -m | oneline | xargs echo "git checkout $*" | sendkeys'
 alias c='git branch | fzf | xargs echo "git checkout $1" | sendkeys'
 # alias fa='tmux send-keys git Space add Space `git ls-files -m -o --exclude-standard | fzf -m | pyp ""'" Space "'".join([line for line in lines])"`'
 # alias fa='tmux send-keys git Space add Space `git ls-files -m -o --exclude-standard | fzf -m | pyp ""'" Space "'".join([line for line in lines])"`'
