@@ -1,1 +1,0 @@
-kubectl edit sts $1 --namespace=henighan --context=$2

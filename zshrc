@@ -145,5 +145,35 @@ seconds_since_modified () {
     echo $(( $(date +%s) - $(stat -f%c $1) ))
 }
 
+# create tmux-session in specified directory with the window arrangement I
+# like for development and open vim
+mux () {
+    if [ $TMUX ]
+      then
+        tmux detach-client
+    fi
+
+    SESSIONNAME="$(basename $1)"
+    tmux has-session -t=$SESSIONNAME &> /dev/null
+
+    if [ $? != 0 ] 
+     then
+        cd $1
+        tmux new-session -s $SESSIONNAME -d
+        tmux send-keys -t $SESSIONNAME "vim" C-m 
+        tmux split-window
+        tmux split-window -h
+        tmux send-keys -t $SESSIONNAME -X cursor-left
+        tmux select-pane -t 1
+        tmux resize-pane -D 15
+    fi
+
+    tmux attach -t $SESSIONNAME
+}
+
+kedit () {
+    kubectl edit sts $1 --namespace=henighan --context=$2
+}
+
 # source fzf key bindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
