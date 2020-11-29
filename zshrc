@@ -123,8 +123,26 @@ mcd () {
     cd $1
 }
 
+# git commit
 mit () {
     git commit -m "$*"
+}
+
+# new branch
+nb () {
+    git checkout -b $1
+}
+
+pycache_clear () {
+    find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
+}
+
+search_n_replace () {
+    find . -type f -name "*.py" -print0 | xargs -0 sed -i '' -e "s/$1/$2/g"
+}
+
+seconds_since_modified () {
+    echo $(( $(date +%s) - $(stat -f%c $1) ))
 }
 
 # source fzf key bindings
