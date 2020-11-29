@@ -22,7 +22,7 @@ brew "tree"
 brew "vim"
 brew "watch"
 brew "wget"
-brew "zsh-syntax-highlighting"
+brew "zplug"
 
 # GUI MacOS Applications
 cask "basictex"
