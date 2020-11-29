@@ -21,6 +21,9 @@ zplug load
 
 bindkey "jj" vi-cmd-mode
 
+export LSCOLORS=Gxfxcxdxbxegedabagacad
+alias ls='ls -G'
+
 
 ###### START eval ssh-agent stuff ######
 # stolen from here
