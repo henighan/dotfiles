@@ -7,6 +7,7 @@ export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
+zplug "kutsan/zsh-system-clipboard"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "themes/robbyrussell", from:oh-my-zsh, as:theme
 if ! zplug check --verbose; then
