@@ -106,12 +106,12 @@ alias skill='killsessionbyname `tmux list-sessions -F "#{session_name}" | fzf -m
 # attach to tmux
 alias ta='tmux a'
 # pytest
-alias t='echo pytest `find ./tests -name \*.py | fzf` | sendkeys'
+alias t='find ./tests -name \*.py | fzf | oneline | xargs echo "pytest $1" | sendkeys'
 # non tmux version
 # alias t='pytest `find ./tests -name \*.py | fzf`'
 alias tt="py.test tests"
 # run python script
-alias p='echo python `find . -name \*.py | fzf` | sendkeys'
+alias p='find . -name \*.py | fzf | oneline | xargs echo "python $1" | sendkeys'
 # non tmux version
 # alias p='python `find . -name \*.py | fzf`'
 # framerate of a video
