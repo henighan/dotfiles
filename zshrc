@@ -15,7 +15,7 @@ if ! zplug check --verbose; then
         echo; zplug install
     fi
 fi
-zplug load --verbose
+zplug load
 ### eng zplug ###
 
 bindkey "jj" vi-cmd-mode
