@@ -1,0 +1,11 @@
+#!/usr/local/bin/python3
+import sys
+import argparse
+
+
+parser = argparse.ArgumentParser(description="Filter lines by word count")
+parser.add_argument("-n", help="word count", type=int)
+args = parser.parse_args()
+for line in sys.stdin:
+    if len(line.split()) == args.n:
+        sys.stdout.write(line)

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+rawhistfile=$(mktemp /tmp/keystrokes.raw_history)
+unsortedstrokesfile=$(mktemp /tmp/keystrokes.unsorted)
+
+cat /dev/stdin > $rawhistfile
+
+maxwords=5
+for (( nwords=1; nwords <= $maxwords; ++nwords ))
+do
+    lastcol=`expr $nwords + 2`
+    cat $rawhistfile | tr -s " " | cut -d " " -f 3-$lastcol | word_count_filter -n $nwords | sort | uniq -c | awk '{$1=(length - length($1))*$1; print $0}' >> "$unsortedstrokesfile"
+done
+
+rm "$rawhistfile"
+echo 'Keystrokes    string' > keystrokes.txt
+cat $unsortedstrokesfile | sort -n -s -k1,1 -r  >> keystrokes.txt
+rm "$unsortedstrokesfile"
+
