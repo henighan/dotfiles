@@ -1,2 +1,0 @@
-#/bin/sh
-exec python -c "print(2.5e5*10/3600/24/float($1), 'days')"
