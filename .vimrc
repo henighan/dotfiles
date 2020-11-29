@@ -37,6 +37,7 @@ Plug 'benmills/vimux'
 Plug 'julienr/vim-cellmode'
 Plug 'davidhalter/jedi-vim'
 let g:jedi#force_py_version=3
+let g:jedi#show_call_signatures = "1"
 " Plug 'powerline/powerline'
 " Plug from https://github.com/scrooloose/sytastic
 " Plug 'scrooloose/syntastic'
@@ -46,14 +47,14 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 " ale syntax checker, way better than sytastic
 Plug 'w0rp/ale'
 let g:ale_linters = {'python': ['pylint']}
 Plug 'scrooloose/nerdtree'
 Plug 'python/black'
-" Plug 'psf/black', { 'tag': '19.10b0' }
+" Plug 'psf/black', { 'tag': '19.3b0' }
 " let g:black_virtualenv='/Users/henighan/miniconda3/envs/py375'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
