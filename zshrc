@@ -16,7 +16,7 @@ if ! zplug check --verbose; then
     fi
 fi
 zplug load
-### eng zplug ###
+### end zplug ###
 
 bindkey "jj" vi-cmd-mode
 
