@@ -21,12 +21,6 @@ zplug load
 
 bindkey "jj" vi-cmd-mode
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
 ###### START eval ssh-agent stuff ######
 # stolen from here
@@ -62,12 +56,6 @@ alias newpull='hub pull-request'
 # open pull request associated with current branch in the browser
 alias sp='hub pr show'
 alias s='git status'
-# alias fa='git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 -o -t git add'
-# alias fa='git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 -J % tmux send-keys git Space add Space % Space'
-# alias sk='pyp "stdin.read().replace("'" "'", "'" Space "'")'
-# alias sk='pyp "'"'"' '"'"'.join(stdin.read().split('"'"'\n'"'"'))"'
-# Replace \n with space.
-alias oneline='tr '"'"'\n'"'"' '"'"' '"'"''
 
 ### fzf git
 # 'file add' git add which fuzzy-matches unchecked/modified files in current working directory. Can add multiple files
@@ -77,15 +65,14 @@ alias oneline='tr '"'"'\n'"'"' '"'"' '"'"''
 # # 'checkout' switch branches by fuzzy-searching them
 # alias c='git branch | fzf | xargs git checkout'
 
+# Replace \n with space.
+alias oneline='tr '"'"'\n'"'"' '"'"' '"'"''
 # send command to tmux prompt, requires replacing space with the word "Space"
 alias sendkeys='tr '"'"' '"'"' '"'"' Space '"'"' | xargs -0 tmux send-keys'
 # sendkeys version of the above fzf git things, so they show up in my history
 alias fa='git ls-files -m -o --exclude-standard | fzf -m | oneline | xargs echo "git add $*" | sendkeys'
 alias fr='git ls-files -m --exclude-standard | fzf -m | oneline | xargs echo "git checkout $*" | sendkeys'
 alias c='git branch | fzf | xargs echo "git checkout $1" | sendkeys'
-# alias fa='tmux send-keys git Space add Space `git ls-files -m -o --exclude-standard | fzf -m | pyp ""'" Space "'".join([line for line in lines])"`'
-# alias fa='tmux send-keys git Space add Space `git ls-files -m -o --exclude-standard | fzf -m | pyp ""'" Space "'".join([line for line in lines])"`'
-# push/pull to origin from current branch
 alias pull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias push='git push origin $(git rev-parse --abbrev-ref HEAD)'
 # blob
@@ -108,13 +95,9 @@ alias skill='killsessionbyname `tmux list-sessions -F "#{session_name}" | fzf -m
 alias ta='tmux a'
 # pytest
 alias t='find ./tests -name \*.py | fzf | oneline | xargs echo "pytest $1" | sendkeys'
-# non tmux version
-# alias t='pytest `find ./tests -name \*.py | fzf`'
 alias tt="py.test tests"
 # run python script
 alias p='find . -name \*.py | fzf | oneline | xargs echo "python $1" | sendkeys'
-# non tmux version
-# alias p='python `find . -name \*.py | fzf`'
 # framerate of a video
 alias framerate='ffprobe -v 0 -of compact=p=0 -select_streams 0 -show_entries stream=r_frame_rate'
 
