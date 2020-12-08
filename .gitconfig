@@ -3,7 +3,7 @@
   email=henighan.2@gmail.com
 [core]
     editor = /usr/local/bin/vim
-	excludesfile = /Users/henighan/.gitignore
+	excludesfile = ~/.gitignore
 [diff]
     tool = vimdiff
 [merge]
