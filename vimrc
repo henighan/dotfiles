@@ -59,7 +59,7 @@ Plug 'python/black'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 let g:black_linelength = 88
-" autocmd BufWritePost *.py silent! execute ':Black'
+autocmd BufWritePost *.py silent! execute ':Black'
 " Use pylint for syntax checking
 let g:syntastic_mode_map = { 'mode': 'passive' }
 let g:syntastic_python_checkers = ['pylint']
