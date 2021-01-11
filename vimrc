@@ -71,12 +71,20 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 Plug 'tell-k/vim-autoflake'
+Plug 'ycm-core/YouCompleteMe'
+let g:ycm_filetype_specific_completion_to_disable = { 'python' : 1 }
+let g:ycm_filetype_blacklist = { 'python' : 1 }
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Initialize plugin system
 call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""" End Plugin Stuff """"""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype on
+
+" a coc thing
+" autocmd FileType yaml inoremap <silent><expr> <C-Space> coc#refresh()
 
 let g:cellmode_tmux_panenumber='2'
 
@@ -152,8 +160,8 @@ set foldlevel=99
 let $FZF_DEFAULT_OPTS = '--reverse'
 command! -bang -nargs=? -complete=dir PFiles
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
-" set pastetoggle to ,p
 
+" set pastetoggle to ,p
 set pastetoggle=<leader>p
 
 " more intuitive splits

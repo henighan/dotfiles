@@ -67,22 +67,19 @@ alias s='git status'
 # alias fr='git checkout `git ls-files -m --exclude-standard | fzf -m | oneline`'
 # # 'checkout' switch branches by fuzzy-searching them
 # alias c='git branch | fzf | xargs git checkout'
-
-# Replace \n with space.
-alias oneline='tr '"'"'\n'"'"' '"'"' '"'"''
-# send command to tmux prompt, requires replacing space with the word "Space"
-alias sendkeys='tr '"'"' '"'"' '"'"' Space '"'"' | xargs -0 tmux send-keys'
 # sendkeys version of the above fzf git things, so they show up in my history
 alias fa='git ls-files -m -o --exclude-standard | fzf -m | oneline | xargs echo "git add $*" | sendkeys'
 alias fr='git ls-files -m --exclude-standard | fzf -m | oneline | xargs echo "git checkout $*" | sendkeys'
 alias c='git branch | fzf | xargs echo "git checkout $1" | sendkeys'
 alias pull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias push='git push origin $(git rev-parse --abbrev-ref HEAD)'
-# blob
-alias bls='bbb ls'
-alias bcat='bbb cat'
 # close vim across all my tmux sessions to avoid hanging swp files
 alias allvimclose='tmux list-sessions -F "#{session_name}" | xargs -I SESSIONNAME tmux send-keys -t SESSIONNAME:0.0 ":qa" C-m'
+
+# Replace \n with space.
+alias oneline='tr '"'"'\n'"'"' '"'"' '"'"''
+# send command to tmux prompt, requires replacing space with the word "Space"
+alias sendkeys='tr '"'"' '"'"' '"'"' Space '"'"' | xargs -0 tmux send-keys'
 # kill specific tmux session (closing vim first)
 killsessionbyname () {
     for session_name in "$@"
@@ -158,9 +155,23 @@ mux () {
     tmux attach -t $SESSIONNAME
 }
 
-kedit () {
-    kubectl edit sts $1 --namespace=henighan --context=$2
-}
-
 # source fzf key bindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/tom/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/tom/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/tom/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/tom/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+export PYTHONPATH=$HOME/miniconda3/bin/python
+conda deactivate
+conda activate
