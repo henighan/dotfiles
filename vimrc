@@ -191,3 +191,4 @@ vmap ,} c{}<Esc>Pl
 vmap ,{ c{}<Esc>Pl%
 vmap ' c''<Esc>Pl
 vmap ," c""<Esc>Pl
+vmap ,` c``<Esc>Pl
