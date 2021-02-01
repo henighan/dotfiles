@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export CLOUDSDK_PYTHON="/usr/local/opt/python@3.8/libexec/bin/python"
 source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
@@ -5,11 +12,10 @@ source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.
 ### zplug ####
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
-zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "kutsan/zsh-system-clipboard"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "themes/robbyrussell", from:oh-my-zsh, as:theme
+zplug romkatv/powerlevel10k, as:theme, depth:1
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
@@ -53,12 +59,16 @@ fi
 ###### END eval ssh-agent stuff ######
 
 ### Aliases
+alias ss='source ~/.zshrc'
 alias watch='watch ' # so we can watch aliases
 # for quicly creating new pull request
 alias newpull='hub pull-request'
 # open pull request associated with current branch in the browser
 alias sp='hub pr show'
 alias s='git status'
+
+# kubernetes
+alias kc=kubectl
 
 ### fzf git
 # 'file add' git add which fuzzy-matches unchecked/modified files in current working directory. Can add multiple files
@@ -150,6 +160,7 @@ mux () {
         tmux send-keys -t $SESSIONNAME -X cursor-left
         tmux select-pane -t 1
         tmux resize-pane -D 15
+        cd ..
     fi
 
     tmux attach -t $SESSIONNAME
@@ -175,3 +186,13 @@ unset __conda_setup
 export PYTHONPATH=$HOME/miniconda3/bin/python
 conda deactivate
 conda activate
+
+# sparrow specific
+# thought I would need this first, but I guess not
+# autoload -U +X bashcompinit && bashcompinit
+# autoload -U +X compinit && compinit
+# tabber
+eval "$(python3 -m tabber.bash_completion)"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
