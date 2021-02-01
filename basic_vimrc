@@ -1,0 +1,63 @@
+" disable ancient vi compatibility
+set nocompatible
+
+" so things are copied to system clipboard
+set clipboard=unnamed
+
+" use jj as <esc> alternative for exiting insert mode
+inoremap jj <Esc>
+
+" make backspace work right
+set backspace=indent,eol,start
+
+colo default
+syntax enable
+" wildmenu gives you tab completion on commands
+set wildmenu
+let g:netrw_banner=0 " disable annoying banner
+" reload my vimrc
+command! Vimrc execute "so $MYVIMRC"
+" Give name of file
+command! Name execute "echo @%"
+
+" make Y behave like other capital letters
+map Y y$
+" improve up down movement on wrapped lines
+nnoremap j gj
+nnoremap k gk
+
+"will show what I'm typing in lower left
+set showcmd
+set autoindent
+set  tabstop=4
+set shiftwidth=4
+set expandtab
+" set the mapleader key, so now q can act like a second control
+let mapleader = ","
+" Code folding in normal mode
+" za folds/unfolds at the cursor
+" zm folds all, zn unfolds all
+set foldmethod=indent
+set foldlevel=99
+
+" set pastetoggle to ,p
+set pastetoggle=<leader>p
+
+" more intuitive splits
+map <c-w>\ <c-w>v<c-w>l
+map <c-w>- <c-w>s<c-w>j
+
+" auto indent
+set smartindent
+
+inoremap <Leader>l <C-o>l
+
+" Enclose stuff in visual mode
+vmap ,) c()<Esc>Pl
+vmap ,( c()<Esc>Pl%
+vmap ,] c[]<Esc>Pl
+vmap ,[ c[]<Esc>Pl%
+vmap ,} c{}<Esc>Pl
+vmap ,{ c{}<Esc>Pl%
+vmap ' c''<Esc>Pl
+vmap ," c""<Esc>Pl
