@@ -4,18 +4,22 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export CLOUDSDK_PYTHON="/usr/local/opt/python@3.8/libexec/bin/python"
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+# export CLOUDSDK_PYTHON="/usr/local/opt/python@3.8/libexec/bin/python"
+# source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+# source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
 ### zplug ####
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
-zplug "plugins/vi-mode", from:oh-my-zsh
-zplug "kutsan/zsh-system-clipboard"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug romkatv/powerlevel10k, as:theme, depth:1
+zplug "plugins/vi-mode", from:oh-my-zsh, depth:1
+zplug "kutsan/zsh-system-clipboard", depth:1
+zplug "zsh-users/zsh-syntax-highlighting", defer:2, depth:1
+# zplug "zsh-users/zsh-autosuggestions", defer:2, depth:1
+# bindkey '^ ' autosuggest-accept
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
@@ -85,6 +89,18 @@ alias pull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias push='git push origin $(git rev-parse --abbrev-ref HEAD)'
 # close vim across all my tmux sessions to avoid hanging swp files
 alias allvimclose='tmux list-sessions -F "#{session_name}" | xargs -I SESSIONNAME tmux send-keys -t SESSIONNAME:0.0 ":qa" C-m'
+
+
+alias listnotpushed='git diff --stat --cached --name-only origin/$(git rev-parse --abbrev-ref HEAD)'
+pp () {
+    if push; then
+        echo "success"
+    else
+        listnotpushed | oneline | xargs git add
+        mit "pre commit"
+        push
+    fi
+}
 
 # Replace \n with space.
 alias oneline='tr '"'"'\n'"'"' '"'"' '"'"''
@@ -187,12 +203,6 @@ export PYTHONPATH=$HOME/miniconda3/bin/python
 conda deactivate
 conda activate
 
-# sparrow specific
-# thought I would need this first, but I guess not
-# autoload -U +X bashcompinit && bashcompinit
-# autoload -U +X compinit && compinit
-# tabber
-eval "$(python3 -m tabber.bash_completion)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
