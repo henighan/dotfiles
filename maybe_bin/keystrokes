@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# usage:
+# >> history | keystrokes
+# >> head keystrokes.txt
+
 rawhistfile=$(mktemp /tmp/keystrokes.raw_history)
 unsortedstrokesfile=$(mktemp /tmp/keystrokes.unsorted)
 
