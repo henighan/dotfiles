@@ -59,17 +59,20 @@ Plug 'python/black'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 let g:black_linelength = 88
-autocmd BufWritePost *.py silent! execute ':Black'
+" autocmd BufWritePost *.py silent! execute ':Black'
 " Use pylint for syntax checking
 let g:syntastic_mode_map = { 'mode': 'passive' }
 let g:syntastic_python_checkers = ['pylint']
 " let g:syntastic_python_pylint_args = '-E'
 " let g:syntastic_python_pylint_exec = '/usr/local/bin/pylint'
 " snippets
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 " for jumping between sections of the snippet
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsListSnippets="<c-l>"
 Plug 'tell-k/vim-autoflake'
 Plug 'ycm-core/YouCompleteMe'
 let g:ycm_filetype_specific_completion_to_disable = { 'python' : 1 }
