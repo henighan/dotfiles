@@ -42,6 +42,7 @@ https://brew.sh/
 ```bash
 cd && git clone https://github.com/henighan/dotfiles.git
 ```
+Note we used https. We will switch to ssh later.
 
 
 # Install brewfile
@@ -92,6 +93,13 @@ Open vim and run
 :PlugInstall
 ```
 
-# create a new github ssh key
+# Create a new github ssh key
 follow these instructions
 https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
+# Use ssh for dotfiles remote (henighan only)
+```bash
+cd ~/dotfiles
+git remote set-url origin git@github.com:henighan/dotfiles.git
+```
+Why do I need to do this? IIUC, https doesnt work when you use 2-factor authentication on github. So if I want to be able to push to dotfiles, I need to swith it to ssh.
