@@ -14,7 +14,8 @@ To accommodate the above, I store my config files in this repo, and (try to) doc
 
 If others find pieces of this useful, that would be a nice side-effect :smile:
 
-Below are my best attempt at instructions for setting up a brand new laptop
+
+### The rest of this readme contains my best attempt at instructions for setting up a brand new (macbook) laptop
 
 
 # First, make sure OS is up to date
