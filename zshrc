@@ -69,6 +69,8 @@ alias watch='watch ' # so we can watch aliases
 alias newpull='gh pr create'
 # open pull request associated with current branch in the browser
 alias sp='gh pr view --web'
+# open current repo in browser
+alias sr='gh repo view --web'
 alias s='git status'
 
 # kubernetes
