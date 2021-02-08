@@ -1,9 +1,18 @@
 # Setup
-Here I try to document my preferred configuration for my personal laptop (specifically a macbook). The [Brewfile](.Brewfile) contains most of the mac applications that I use. In addition, I store my "dotfiles", eg [.zshrc](zshrc) for zshell, [.vimrc](vimrc) for vim, [.tmux.conf](tmux.conf) for tmux, and [.gitignore](gitignore)+[.gitconfig](gitconfig). In this My goals are:
-1. Become productive with a new laptop as quickly and painlessly as possible
-1. Make it easy to set subsets of this configuration on another machine (eg, configure vim on a remote machine).
 
-If others find it useful, that would be a nice side-effect :smile:
+I want to:
+1. Become productive with a new laptop as quickly and painlessly as possible
+1. Make it easy to use subsets of my preferred configuration on another machine (eg, configure vim on a remote machine) without having to memorize all the details.
+
+To accommodate the above, I store my config files in this repo, and (try to) document here how to use them on a brand new laptop (macboook). Config files include:
+1. [Brewfile](.Brewfile) contains most of the mac applications that I use and allows me to install them with the [homebrew](https://brew.sh/) package manager.
+1. [.zshrc](zshrc) for zshell config
+1. [.vimrc](vimrc) for vim config
+1. [.tmux.conf](tmux.conf) for tmux config
+1. [.gitignore](gitignore)+[.gitconfig](gitconfig) for git config
+
+
+If others find pieces of this useful, that would be a nice side-effect :smile:
 
 Below are my best attempt at instructions for setting up a brand new laptop
 
