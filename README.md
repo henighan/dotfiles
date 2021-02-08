@@ -59,6 +59,7 @@ To install useful key bindings and fuzzy completion:
 
 ## miniconda
 conda init "$(basename "${SHELL}")"
+This will add a bunch of stuff to the bottom of ~/.zshrc. Cut out and move that stuff into a new `~/.conda.zsh` file.
 
 
 I also had to run this to get zplug to work correctly:
