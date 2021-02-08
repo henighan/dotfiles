@@ -15,9 +15,9 @@ fi
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 zplug romkatv/powerlevel10k, as:theme, depth:1
-zplug "plugins/vi-mode", from:oh-my-zsh, depth:1
 zplug "kutsan/zsh-system-clipboard", depth:1
 zplug "zsh-users/zsh-syntax-highlighting", defer:2, depth:1
+# zplug "plugins/vi-mode", from:oh-my-zsh, depth:1
 # zplug "zsh-users/zsh-autosuggestions", defer:2, depth:1
 # bindkey '^ ' autosuggest-accept
 if ! zplug check --verbose; then
@@ -185,24 +185,5 @@ mux () {
 # source fzf key bindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/tom/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/tom/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/tom/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/tom/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-export PYTHONPATH=$HOME/miniconda3/bin/python
-conda deactivate
-conda activate
-
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# source conda init
+[ -f ~/.conda.zsh ] && source ~/.conda.zsh
