@@ -11,7 +11,7 @@ tap "homebrew/core"
 # brew formulae
 brew "ffmpeg"
 brew "fzf"
-brew "hub"
+brew "gh"
 brew "jq"
 brew "mosh"
 brew "mpich"
