@@ -66,9 +66,9 @@ fi
 alias ss='source ~/.zshrc'
 alias watch='watch ' # so we can watch aliases
 # for quicly creating new pull request
-alias newpull='hub pull-request'
+alias newpull='gh pr create'
 # open pull request associated with current branch in the browser
-alias sp='hub pr show'
+alias sp='gh pr view --web'
 alias s='git status'
 
 # kubernetes
