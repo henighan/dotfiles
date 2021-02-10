@@ -65,11 +65,34 @@ fi
 ### Aliases
 alias ss='source ~/.zshrc'
 alias watch='watch ' # so we can watch aliases
-# for quicly creating new pull request
+
+### Some git+github aliases
+# for quickly creating new pull request
 alias newpull='gh pr create'
 # open pull request associated with current branch in the browser
 alias sp='gh pr view --web'
+# open a different pr, selected with fzf, in the browser
+propen () {
+    gh pr list | fzf | awk '{print $1}' | xargs gh pr view --web
+}
+# checkout the branch of another pr, selected with fzf
+prcheckout () {
+    branch=$(gh pr list | fzf | awk '{print $(NF-1)}')
+    if ! git checkout $branch; then
+        git fetch origin
+        git checkout $branch
+    fi
+}
+alias prlist='gh pr list'
 # open current repo in browser
+# list github issues
+alias ilist='gh issue list'
+# fzf select an issue and open it in the browser
+iopen () {
+    gh issue list | fzf | awk '{print $1}' | xargs gh issue view --web
+}
+alias icreate='gh issue create'
+
 alias sr='gh repo view --web'
 alias s='git status'
 
@@ -87,12 +110,15 @@ alias kc=kubectl
 alias fa='git ls-files -m -o --exclude-standard | fzf -m | oneline | xargs echo "git add $*" | sendkeys'
 alias fr='git ls-files -m --exclude-standard | fzf -m | oneline | xargs echo "git checkout $*" | sendkeys'
 alias c='git branch | fzf | xargs echo "git checkout $1" | sendkeys'
+alias bls='git branch | cat'
 alias pull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias push='git push origin $(git rev-parse --abbrev-ref HEAD)'
 # close vim across all my tmux sessions to avoid hanging swp files
 alias allvimclose='tmux list-sessions -F "#{session_name}" | xargs -I SESSIONNAME tmux send-keys -t SESSIONNAME:0.0 ":qa" C-m'
 
 
+# Replace \n with space.
+alias oneline='tr '"'"'\n'"'"' '"'"' '"'"''
 alias listnotpushed='git diff --stat --cached --name-only origin/$(git rev-parse --abbrev-ref HEAD)'
 pp () {
     if push; then
@@ -104,8 +130,6 @@ pp () {
     fi
 }
 
-# Replace \n with space.
-alias oneline='tr '"'"'\n'"'"' '"'"' '"'"''
 # send command to tmux prompt, requires replacing space with the word "Space"
 alias sendkeys='tr '"'"' '"'"' '"'"' Space '"'"' | xargs -0 tmux send-keys'
 # kill specific tmux session (closing vim first)
