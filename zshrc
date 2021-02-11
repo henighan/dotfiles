@@ -68,7 +68,7 @@ alias watch='watch ' # so we can watch aliases
 
 ### Some git+github aliases
 # for quickly creating new pull request
-alias newpull='gh pr create'
+alias prcreate='gh pr create'
 # open pull request associated with current branch in the browser
 alias sp='gh pr view --web'
 # open a different pr, selected with fzf, in the browser
@@ -84,7 +84,6 @@ prcheckout () {
     fi
 }
 alias prlist='gh pr list'
-# open current repo in browser
 # list github issues
 alias ilist='gh issue list'
 # fzf select an issue and open it in the browser
@@ -93,6 +92,7 @@ iopen () {
 }
 alias icreate='gh issue create'
 
+# open current repo in browser
 alias sr='gh repo view --web'
 alias s='git status'
 
@@ -119,7 +119,15 @@ alias allvimclose='tmux list-sessions -F "#{session_name}" | xargs -I SESSIONNAM
 
 # Replace \n with space.
 alias oneline='tr '"'"'\n'"'"' '"'"' '"'"''
-alias listnotpushed='git diff --stat --cached --name-only origin/$(git rev-parse --abbrev-ref HEAD)'
+
+# list files which are committed but haven't been pushed
+listnotpushed () {
+    if ! git diff --stat --cached --name-only origin/$(git rev-parse --abbrev-ref HEAD); then
+        git diff --name-only master
+    fi
+}
+
+# pre-commit push: if first push fails, git add+commit and try again
 pp () {
     if push; then
         echo "success"
