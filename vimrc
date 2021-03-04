@@ -10,13 +10,18 @@ call plug#begin('~/.vim/plugged')
 
 " For rendering markdown in a browser
 Plug 'JamshedVesuna/vim-markdown-preview'
-Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
-let g:pydocstring_formatter='sphinx'
-let vim_markdown_preview_github=1 " ctrl-p
+let vim_markdown_preview_hub=1 " ctrl-p
 let vim_markdown_preview_browser='Google Chrome'
+" Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
+" let g:pydocstring_formatter='sphinx'
+" for autocomplete when doing search or search-n-replace
+Plug 'vim-scripts/sherlock.vim'
+cnoremap <C-j> <C-\>esherlock#completeForward()<CR>
+cnoremap <C-k> <C-\>esherlock#completeBackward()<CR>
 " for interacting with git
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+command! Mdiff execute "Gvdiff master"
 " for easy surrounding with quotes, tags
 Plug 'tpope/vim-surround'
 " powerline, a cool status bar
@@ -32,33 +37,25 @@ Plug 'moll/vim-bbye'
 Plug 'junegunn/gv.vim'
 " show git +/-/~ in gutter
 Plug 'airblade/vim-gitgutter'
-Plug 'benmills/vimux'
-" Plug 'julienr/vimux-pyutils'
-Plug 'julienr/vim-cellmode'
+highlight! link SignColumn LineNr
+" Plug 'benmills/vimux'
+" " Plug 'julienr/vimux-pyutils'
+" Plug 'julienr/vim-cellmode'
 Plug 'davidhalter/jedi-vim'
-let g:jedi#force_py_version=3
-let g:jedi#show_call_signatures = "1"
-" Plug 'powerline/powerline'
-" Plug from https://github.com/scrooloose/sytastic
-" Plug 'scrooloose/syntastic'
-" syntastic recommended settings
+" let g:jedi#force_py_version=3
+" let g:jedi#show_call_signatures = "1"
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" ale syntax checker, way better than sytastic
 Plug 'w0rp/ale'
 let g:ale_linters = {'python': ['pylint']}
 Plug 'scrooloose/nerdtree'
 Plug 'python/black'
+let g:black_linelength = 88
 " Plug 'psf/black', { 'tag': '19.3b0' }
 " let g:black_virtualenv='/Users/henighan/miniconda3/envs/py375'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-let g:black_linelength = 88
 " autocmd BufWritePost *.py silent! execute ':Black'
 " Use pylint for syntax checking
 let g:syntastic_mode_map = { 'mode': 'passive' }
@@ -74,10 +71,13 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsListSnippets="<c-l>"
 Plug 'tell-k/vim-autoflake'
-Plug 'ycm-core/YouCompleteMe'
-let g:ycm_filetype_specific_completion_to_disable = { 'python' : 1 }
-let g:ycm_filetype_blacklist = { 'python' : 1 }
+" Plug 'ycm-core/YouCompleteMe'
+" let g:ycm_filetype_specific_completion_to_disable = { 'python' : 1 }
+" let g:ycm_filetype_blacklist = { 'python' : 1 }
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Allows you do do search-n-replace across multiple files in cwindow
+" TODO make :grep -r ... shortcut for python files
+Plug 'stefandtw/quickfix-reflector.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -106,7 +106,7 @@ inoremap jj <Esc>
 " make backspace work right
 set backspace=indent,eol,start
 
-colo default
+colo delek
 syntax enable
 " wildmenu gives you tab completion on commands
 set wildmenu
@@ -126,9 +126,9 @@ nnoremap ,py :-1read $HOME/.vim/.python_skeleton.py<CR>:4<CR>i
 " initializes bash file
 nnoremap ,sh :-1read $HOME/.vim/.bash_skeleton.sh<CR>:3<CR>i
 " python print variable
-nnoremap <Leader>w yiwoprint("<Esc>pa", <Esc>pa)<Esc>
+nnoremap ,e yiwoprint(f"{<Esc>pa=}")<Esc>
 " break out definition of kwarg
-nnoremap <Leader>b byt,[(O<Esc>p^f=cl = <Esc>bb<c-o>yiwf=pldt,[(k$
+nnoremap ,b byt,[(O<Esc>p^f=cl = <Esc>bb<c-o>yiwf=pldt,[(k$
 
 " make Y behave like other capital letters
 map Y y$
@@ -143,16 +143,8 @@ set autoindent
 set  tabstop=4
 set shiftwidth=4
 set expandtab
-" set the mapleader key, so now q can act like a second control
+" set the mapleader key
 let mapleader = ","
-" for example, <leader>o will now enclose stuff in < />
-inoremap <Leader>o <Esc>I<<Esc>A/><CR>
-" makes inline xml tag
-inoremap <Leader>h <Esc>yyppkkI<<Esc>A><Esc>jI<tab><Esc>ld$jI</<Esc>ea> <Esc>DkA
-" multi line xml tag
-inoremap <Leader>i <Esc>I<<Esc>lyeA></<Esc>pA><Esc>F<i
-" wrap in xml comment
-inoremap <Leader>c <Esc>I<!-- <Esc>A --><Esc>
 " Code folding in normal mode
 " za folds/unfolds at the cursor
 " zm folds all, zn unfolds all
@@ -171,16 +163,14 @@ set pastetoggle=<leader>p
 map <c-w>\ <c-w>v<c-w>l
 map <c-w>- <c-w>s<c-w>j
 
-" show 80th column, which is the standard for python
-set colorcolumn=80
-highlight ColorColumn ctermbg=4
+" show column, which is the standard for python
+" set colorcolumn=88
+" highlight ColorColumn ctermbg=4
 
 " execute the python file I'm editing
 command! Python !python %
 " auto indent
 set smartindent
-
-inoremap <Leader>l <C-o>l
 
 " set .launch syntax to xml
 au BufNewFile,BufRead *.launch set filetype=xml
