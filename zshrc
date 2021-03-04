@@ -95,6 +95,8 @@ alias icreate='gh issue create'
 # open current repo in browser
 alias sr='gh repo view --web'
 alias s='git status'
+alias ga='git add'
+alias unstage='git reset'
 
 # kubernetes
 alias kc=kubectl
@@ -113,6 +115,9 @@ alias c='git branch | fzf | xargs echo "git checkout $1" | sendkeys'
 alias bls='git branch | cat'
 alias pull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias push='git push origin $(git rev-parse --abbrev-ref HEAD)'
+alias emptycommit='git commit --allow-empty -m "empty commit"'
+alias uncommit='git reset --soft HEAD~1'
+alias prunebranches="git fetch --prune && git branch --merged master | grep -v '^[ *]*master$' | xargs -r git branch -d"
 # close vim across all my tmux sessions to avoid hanging swp files
 alias allvimclose='tmux list-sessions -F "#{session_name}" | xargs -I SESSIONNAME tmux send-keys -t SESSIONNAME:0.0 ":qa" C-m'
 
