@@ -25,6 +25,8 @@ Often it ships with an outdated OS, and I think its worth doing the software upg
 I use ctrl a lot and caps-lock never, so...
 Settings -> keyboard -> modifier keys -> change caps lock to ctrl
 
+In the `shortcuts` tab, select `keyboard` in the left menu and change "Move focus to next window" from cmd+` to cmd+ . I find this less annoying
+
 I find these navigation keys for google chrome more pleasant than the defaults. Note `h` and `l` do in vim what the left and right arrow keys typically do.
 In keyboard shortcuts, Select “App Shortcuts” from the left menu and start adding the following for google chrome:
 1. New Tab: ^N
