@@ -93,7 +93,8 @@ iopen () {
 alias icreate='gh issue create'
 
 # open current repo in browser
-alias sr='gh repo view --web'
+alias brepo='gh repo view --web'
+alias bbranch='gh repo view --web --branch $(git rev-parse --abbrev-ref HEAD)'
 alias s='git status'
 alias ga='git add'
 alias unstage='git reset'
@@ -124,6 +125,10 @@ alias allvimclose='tmux list-sessions -F "#{session_name}" | xargs -I SESSIONNAM
 
 # Replace \n with space.
 alias oneline='tr '"'"'\n'"'"' '"'"' '"'"''
+# first column
+alias firstcol="cut -d ' ' -f 1"
+# collapse multiple spaces into one space
+alias onespace="tr -s ' '"
 
 # list files which are committed but haven't been pushed
 listnotpushed () {
@@ -165,6 +170,8 @@ alias tt="py.test tests"
 alias p='find . -name \*.py | fzf | oneline | xargs echo "python $1" | sendkeys'
 # framerate of a video
 alias framerate='ffprobe -v 0 -of compact=p=0 -select_streams 0 -show_entries stream=r_frame_rate'
+
+wat() { while true; do x=$(clear; $@); echo $x; sleep 1; done }
 
 ### Functions
 mcd () {
