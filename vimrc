@@ -52,6 +52,8 @@ set statusline+=%*
 " ale syntax checker, way better than sytastic
 Plug 'w0rp/ale'
 let g:ale_linters = {'python': ['pylint']}
+Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
 Plug 'scrooloose/nerdtree'
 Plug 'python/black'
 " Plug 'psf/black', { 'tag': '19.3b0' }

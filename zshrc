@@ -203,6 +203,11 @@ export PYTHONPATH=$HOME/miniconda3/bin/python
 conda deactivate
 conda activate
 
+alias tinit="terraform init"
+alias tapply="terraform apply"
+alias tdestroy="terraform destroy"
+alias tplan="terraform plan"
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
