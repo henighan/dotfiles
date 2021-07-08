@@ -49,6 +49,8 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 Plug 'w0rp/ale'
 let g:ale_linters = {'python': ['pylint']}
+Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
 Plug 'scrooloose/nerdtree'
 Plug 'python/black'
 let g:black_linelength = 88

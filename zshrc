@@ -228,6 +228,13 @@ mux () {
     tmux attach -t $SESSIONNAME
 }
 
+
+# terraform
+alias tinit="terraform init"
+alias tapply="terraform apply"
+alias tdestroy="terraform destroy"
+alias tplan="terraform plan"
+
 # source fzf key bindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
