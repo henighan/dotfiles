@@ -1,0 +1,8 @@
+{
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "window.zoomLevel": 1,
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.fontFamily": "Meslo LG M DZ for Powerline",
+    "vim.vimrc.enable": true
+}

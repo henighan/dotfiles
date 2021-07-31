@@ -1,0 +1,91 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.navigateDown"
+    },
+    // {
+    //     "key": "ctrl+a \\",
+    //     "command": "workbench.action.terminal.split",
+    //     "when": "terminalFocus && terminalProcessSupported"
+    // },
+    // {
+    //     "key": "ctrl+shift+5",
+    //     "command": "-workbench.action.terminal.split",
+    //     "when": "terminalFocus && terminalProcessSupported"
+    // },
+    {
+        "key": "ctrl+l ctrl+j",
+        "command": "workbench.action.terminal.resizePaneDown",
+        "when": "terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+l ctrl+k",
+        "command": "workbench.action.terminal.resizePaneUp",
+        "when": "terminalFocus && terminalProcessSupported"
+    },
+    // {
+    //     "key": "ctrl+a ctrl+l",
+    //     "command": "workbench.action.terminal.resizePaneRight",
+    //     "when": "terminalFocus && terminalProcessSupported"
+    // },
+    // {
+    //     "key": "ctrl+a ctrl+h",
+    //     "command": "workbench.action.terminal.resizePaneLeft",
+    //     "when": "terminalFocus && terminalProcessSupported"
+    // },
+    // {
+    //     "key": "ctrl+cmd+down",
+    //     "command": "-workbench.action.terminal.resizePaneDown",
+    //     "when": "terminalFocus && terminalProcessSupported"
+    // },
+    // {
+    //     "key": "ctrl+a l",
+    //     "command": "workbench.action.terminal.focusNextPane",
+    //     "when": "terminalFocus && panelPosition == 'bottom'"
+    // },
+    // {
+    //     "key": "ctrl+a h",
+    //     "command": "workbench.action.terminal.focusPreviousPane",
+    //     "when": "terminalFocus && panelPosition == 'bottom'"
+    // },
+    // {
+    //     "key": "ctrl+a x",
+    //     "command": "workbench.action.terminal.kill",
+    //     "when": "terminalFocus"
+    // },
+    // {
+    //     "key": "ctrl+a c",
+    //     "command": "workbench.action.terminal.newInActiveWorkspace",
+    //     "when": "terminalFocus"
+    // },
+    // {
+    //     "key": "ctrl+a n",
+    //     "command": "workbench.action.terminal.focusNext",
+    //     "when": "terminalFocus"
+    // },
+    // {
+    //     "key": "ctrl+a p",
+    //     "command": "workbench.action.terminal.focusPrevious",
+    //     "when": "terminalFocus"
+    // },
+    {
+        "key": "ctrl+l z",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+l z",
+        "command": "workbench.action.closePanel",
+        "when": "editorFocus && panelVisible"
+    },
+    {
+        "key": "ctrl+l z",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "editorFocus && !panelVisible"
+    },
+]
