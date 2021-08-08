@@ -1,8 +1,35 @@
 {
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
-    "window.zoomLevel": 1,
     "terminal.external.osxExec": "iTerm.app",
-    "terminal.integrated.fontFamily": "Meslo LG M DZ for Powerline",
-    "vim.vimrc.enable": true
+    "terminal.integrated.fontFamily": "Menlo for Powerline",
+    "vim.vimrc.enable": true,
+    "vim.useSystemClipboard": true,
+
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+        "before": [",", "r"],
+        // "before": ["<C-f>"],
+        "commands": ["editor.action.rename"]
+        },
+        // {
+        // // "before": ["<leader>", "f"],
+        // "before": ["<C-p>"],
+        // "commands": ["workbench.action.showCommands"]
+        // },
+    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "editor.minimap.enabled": false,
+    "editor.hideCursorInOverviewRuler": true,
+    "python.analysis.indexing": true,
+    "python.formatting.blackArgs": ["-l 88"],
+    "editor.lineNumbers": "off",
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Default Light+"
 }

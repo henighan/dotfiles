@@ -5,8 +5,24 @@
         "command": "workbench.action.navigateUp"
     },
     {
+        "key": "ctrl+k",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "sequence": [
+              "workbench.action.toggleMaximizedPanel",
+            //   "workbench.action.navigateUp"
+            ]
+          },
+        "when": "terminalFocus && panelMaximized"
+    },
+    {
         "key": "ctrl+j",
         "command": "workbench.action.navigateDown"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "editorFocus && !panelVisible"
     },
     // {
     //     "key": "ctrl+a \\",
@@ -87,5 +103,24 @@
         "key": "ctrl+l z",
         "command": "workbench.action.terminal.toggleTerminal",
         "when": "editorFocus && !panelVisible"
+    },
+    {
+        "key": "ctrl+;",
+        "command": "workbench.action.showCommands",
+    },
+    {
+        "key": "ctrl+;",
+        "command": "workbench.action.navigateBack",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "workbench.action.quickOpen",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "workbench.action.navigateBack",
+        "when": "inQuickOpen"
     },
 ]
