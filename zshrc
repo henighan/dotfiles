@@ -34,6 +34,8 @@ bindkey "jj" vi-cmd-mode
 export LSCOLORS=Gxfxcxdxbxegedabagacad
 alias ls='ls -G'
 
+alias regexgrep='grep -o -E'
+
 
 ###### START eval ssh-agent stuff ######
 # stolen from here
@@ -162,7 +164,7 @@ killsessionbyname () {
 # kill tmux sessions, selecting session with fzf
 alias skill='killsessionbyname `tmux list-sessions -F "#{session_name}" | fzf -m | oneline`'
 # attach to tmux
-alias ta='tmux a'
+alias ta='tmux a -t'
 # pytest
 alias t='find ./tests -name \*.py | fzf | oneline | xargs echo "pytest $1" | sendkeys'
 alias tt="py.test tests"
