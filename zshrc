@@ -114,8 +114,10 @@ alias kc=kubectl
 # sendkeys version of the above fzf git things, so they show up in my history
 alias fa='git ls-files -m -o --exclude-standard | fzf -m | oneline | xargs echo "git add $*" | sendkeys'
 alias fr='git ls-files -m --exclude-standard | fzf -m | oneline | xargs echo "git checkout $*" | sendkeys'
+# alias bls='git branch | cat'
+alias bls="git for-each-ref --color=always --sort=committerdate refs/heads/ --format='%(HEAD) %(color:white)%(refname:short)%(color:reset) - %(color:yellow)%(contents:subject)%(color:reset) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias c='git branch | fzf | xargs echo "git checkout $1" | sendkeys'
-alias bls='git branch | cat'
+alias checkout='bls --color=always | fzf --ansi --tac | xargs echo | cut -d " " -f 1 | xargs echo "git checkout $1" | sendkeys'
 alias pull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias push='git push origin $(git rev-parse --abbrev-ref HEAD)'
 alias emptycommit='git commit --allow-empty -m "empty commit"'
@@ -123,6 +125,8 @@ alias uncommit='git reset --soft HEAD~1'
 alias prunebranches="git fetch --prune && git branch --merged master | grep -v '^[ *]*master$' | xargs -r git branch -d"
 # close vim across all my tmux sessions to avoid hanging swp files
 alias allvimclose='tmux list-sessions -F "#{session_name}" | xargs -I SESSIONNAME tmux send-keys -t SESSIONNAME:0.0 ":qa" C-m'
+
+alias yqless="yq -C . | less -R"
 
 
 # Replace \n with space.
