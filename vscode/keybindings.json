@@ -6,14 +6,13 @@
     },
     {
         "key": "ctrl+k",
-        "command": "extension.multiCommand.execute",
-        "args": {
-            "sequence": [
-              "workbench.action.toggleMaximizedPanel",
-            //   "workbench.action.navigateUp"
-            ]
-          },
-        "when": "terminalFocus && panelMaximized"
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "!editorAreaVisible"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.closePanel",
+        "when": "editorFocus && panelVisible"
     },
     {
         "key": "ctrl+j",
@@ -23,6 +22,11 @@
         "key": "ctrl+j",
         "command": "workbench.action.terminal.toggleTerminal",
         "when": "editorFocus && !panelVisible"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "terminalFocus"
     },
     // {
     //     "key": "ctrl+a \\",
@@ -89,21 +93,6 @@
     //     "command": "workbench.action.terminal.focusPrevious",
     //     "when": "terminalFocus"
     // },
-    {
-        "key": "ctrl+l z",
-        "command": "workbench.action.toggleMaximizedPanel",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "ctrl+l z",
-        "command": "workbench.action.closePanel",
-        "when": "editorFocus && panelVisible"
-    },
-    {
-        "key": "ctrl+l z",
-        "command": "workbench.action.terminal.toggleTerminal",
-        "when": "editorFocus && !panelVisible"
-    },
     {
         "key": "ctrl+;",
         "command": "workbench.action.showCommands",
