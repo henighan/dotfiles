@@ -174,6 +174,8 @@ alias t='find ./tests -name \*.py | fzf | oneline | xargs echo "pytest $1" | sen
 alias tt="py.test tests"
 # run python script
 alias p='find . -name \*.py | fzf | oneline | xargs echo "python $1" | sendkeys'
+# run python script with python -m (pretty brittle, depends on path)
+alias mm='find . -name \*.py | fzf | rev | cut -d. -f2- | rev | cut -d/ -f3- | tr "/" "." | xargs -I {} echo "python -m {}" | oneline | sendkeys'
 # framerate of a video
 alias framerate='ffprobe -v 0 -of compact=p=0 -select_streams 0 -show_entries stream=r_frame_rate'
 
