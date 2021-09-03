@@ -102,7 +102,13 @@ alias ga='git add'
 alias unstage='git reset'
 
 # kubernetes
+# zshell autocomplete
+# https://kubernetes.io/docs/tasks/tools/included/optional-kubectl-configs-zsh/
+source <(kubectl completion zsh)
 alias kc=kubectl
+# make autocomplete work for alias
+complete -F __start_kubectl kc
+alias kx=kubectx # https://github.com/ahmetb/kubectx
 
 ### fzf git
 # 'file add' git add which fuzzy-matches unchecked/modified files in current working directory. Can add multiple files
