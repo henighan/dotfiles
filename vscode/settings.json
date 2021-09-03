@@ -29,9 +29,16 @@
     "editor.hideCursorInOverviewRuler": true,
     "python.analysis.indexing": true,
     "python.formatting.blackArgs": ["-l 88"],
-    // "editor.lineNumbers": "off",
+    "editor.lineNumbers": "off",
     "window.zoomLevel": 2,
     "python.languageServer": "Pylance",
+    "terminal.integrated.profiles.osx": {
+        "my-tmux": {
+        "path": "/Users/henighan/dotfiles/vscode/tmux.sh",
+        "args": []
+        }
+    },
+    "terminal.integrated.defaultProfile.osx": "my-tmux",
     "workbench.colorTheme": "Default Light+",
-    "terminal.integrated.shell.osx": "/Users/henighan/dotfiles/vscode/tmux.sh"
+    "terminal.integrated.allowChords": false
 }
