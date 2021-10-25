@@ -64,14 +64,6 @@ let g:syntastic_mode_map = { 'mode': 'passive' }
 let g:syntastic_python_checkers = ['pylint']
 " let g:syntastic_python_pylint_args = '-E'
 " let g:syntastic_python_pylint_exec = '/usr/local/bin/pylint'
-" snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-" for jumping between sections of the snippet
-let g:UltiSnipsExpandTrigger="<c-k>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsListSnippets="<c-l>"
 Plug 'tell-k/vim-autoflake'
 " Plug 'ycm-core/YouCompleteMe'
 " let g:ycm_filetype_specific_completion_to_disable = { 'python' : 1 }
@@ -129,6 +121,7 @@ nnoremap ,py :-1read $HOME/.vim/.python_skeleton.py<CR>:4<CR>i
 nnoremap ,sh :-1read $HOME/.vim/.bash_skeleton.sh<CR>:3<CR>i
 " python print variable
 nnoremap ,e yiwoprint(f"{<Esc>pa=}")<Esc>
+nnoremap ,i yiwoinfo(f"{<Esc>pa=}")<Esc>
 vmap ,e yoprint(f"{<Esc>pa=}")<Esc>
 " break out definition of kwarg
 nnoremap ,b byt,[(O<Esc>p^f=cl = <Esc>bb<c-o>yiwf=pldt,[(k$

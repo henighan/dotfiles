@@ -39,6 +39,10 @@
         }
     },
     "terminal.integrated.defaultProfile.osx": "my-tmux",
-    "workbench.colorTheme": "Default Light+",
-    "terminal.integrated.allowChords": false
+    "terminal.integrated.allowChords": false,
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "terminal.integrated.inheritEnv": false,
+    "redhat.telemetry.enabled": false,
+    "workbench.colorTheme": "Default Light+"
 }

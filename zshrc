@@ -137,8 +137,16 @@ alias yqless="yq -C . | less -R"
 
 # Replace \n with space.
 alias oneline='tr '"'"'\n'"'"' '"'"' '"'"''
+# collapse multiple spaces into one, also strip leading and trailing whitespace
+squeezespace () {
+    awk '{$1=$1};1'
+}
 # first column
 alias firstcol="cut -d ' ' -f 1"
+# any column
+gcol () {
+    squeezespace | cut -d ' ' -f $1
+}
 # collapse multiple spaces into one space
 alias onespace="tr -s ' '"
 
