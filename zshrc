@@ -106,6 +106,9 @@ alias unstage='git reset'
 # https://kubernetes.io/docs/tasks/tools/included/optional-kubectl-configs-zsh/
 source <(kubectl completion zsh)
 alias kc=kubectl
+kcyaml () {
+    kubectl get "$1" "$2" -o yaml | kubectl neat
+}
 # make autocomplete work for alias
 complete -F __start_kubectl kc
 alias kx=kubectx # https://github.com/ahmetb/kubectx
@@ -128,6 +131,7 @@ alias pull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias push='git push origin $(git rev-parse --abbrev-ref HEAD)'
 alias emptycommit='git commit --allow-empty -m "empty commit"'
 alias uncommit='git reset --soft HEAD~1'
+alias pmaster='git pull origin master'
 alias prunebranches="git fetch --prune && git branch --merged master | grep -v '^[ *]*master$' | xargs -r git branch -d"
 # close vim across all my tmux sessions to avoid hanging swp files
 alias allvimclose='tmux list-sessions -F "#{session_name}" | xargs -I SESSIONNAME tmux send-keys -t SESSIONNAME:0.0 ":qa" C-m'
@@ -149,6 +153,10 @@ gcol () {
 }
 # collapse multiple spaces into one space
 alias onespace="tr -s ' '"
+# remove duplicate lines
+dedup () {
+    awk '!seen[$0]++'
+}
 
 # list files which are committed but haven't been pushed
 listnotpushed () {
