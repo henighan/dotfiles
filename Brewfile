@@ -25,6 +25,7 @@ brew "zplug"
 brew "mono"
 brew "go"
 brew "nodejs"
+brew "gh"
 
 # GUI MacOS Applications
 cask "basictex"
