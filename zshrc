@@ -64,6 +64,10 @@ else
 fi
 ###### END eval ssh-agent stuff ######
 
+# shared terminal history across terminals
+setopt inc_append_history
+setopt sharehistory
+
 ### Aliases
 alias ss='source ~/.zshrc'
 alias watch='watch ' # so we can watch aliases
