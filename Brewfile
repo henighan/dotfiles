@@ -10,6 +10,10 @@ tap "homebrew/core"
 
 # brew formulae
 brew "ffmpeg"
+brew "bat"
+brew "diff-so-fancy"
+brew "exa"
+brew "fx"
 brew "fzf"
 brew "gh"
 brew "jq"
