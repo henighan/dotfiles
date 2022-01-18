@@ -52,6 +52,5 @@
     "redhat.telemetry.enabled": false,
     "workbench.preferredLightColorTheme": "Default Light+",
     "workbench.preferredDarkColorTheme": "Default Dark+",
-    "window.autoDetectColorScheme": true,
-    "workbench.colorTheme": "Default Light+"
+    "window.autoDetectColorScheme": true
 }

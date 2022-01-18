@@ -36,6 +36,9 @@ alias ls='ls -G'
 
 alias regexgrep='grep -o -E'
 
+# global npm packages don't work without this
+export NODE_PATH=/opt/homebrew/lib/node_modules
+
 
 ###### START eval ssh-agent stuff ######
 # stolen from here
