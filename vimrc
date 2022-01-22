@@ -19,9 +19,9 @@ Plug 'vim-scripts/sherlock.vim'
 cnoremap <C-j> <C-\>esherlock#completeForward()<CR>
 cnoremap <C-k> <C-\>esherlock#completeBackward()<CR>
 " for interacting with git
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-command! Mdiff execute "Gvdiff master"
+" Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-rhubarb'
+" command! Mdiff execute "Gvdiff master"
 " for easy surrounding with quotes, tags
 Plug 'tpope/vim-surround'
 " powerline, a cool status bar
@@ -52,7 +52,7 @@ let g:ale_linters = {'python': ['pylint']}
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'scrooloose/nerdtree'
-Plug 'python/black'
+" Plug 'python/black'
 let g:black_linelength = 88
 " Plug 'psf/black', { 'tag': '19.3b0' }
 " let g:black_virtualenv='/Users/henighan/miniconda3/envs/py375'

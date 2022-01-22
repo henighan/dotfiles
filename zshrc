@@ -36,6 +36,9 @@ alias ls='ls -G'
 
 alias regexgrep='grep -o -E'
 
+# global npm packages don't work without this
+export NODE_PATH=/opt/homebrew/lib/node_modules
+
 
 ###### START eval ssh-agent stuff ######
 # stolen from here
@@ -143,7 +146,7 @@ alias allvimclose='tmux list-sessions -F "#{session_name}" | xargs -I SESSIONNAM
 
 alias yqless="yq -C . | less -R"
 
-
+## vanilla unix aliases
 # Replace \n with space.
 alias oneline='tr '"'"'\n'"'"' '"'"' '"'"''
 # collapse multiple spaces into one, also strip leading and trailing whitespace
@@ -162,6 +165,18 @@ alias onespace="tr -s ' '"
 dedup () {
     awk '!seen[$0]++'
 }
+# dark-mode compatible bat. Bat is like cat but with nicer colors
+dat() {
+    bat --theme=$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo default || echo GitHub) $@
+}
+# use for nicer less with colors
+dess() {
+    dat -f $1 | less -r
+}
+# exa for nice ls -l output
+alias ll="exa -lbhFa --git -s modified"
+alias etree="exa --tree --color=always | less -R"
+
 
 # list files which are committed but haven't been pushed
 listnotpushed () {

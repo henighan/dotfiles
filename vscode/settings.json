@@ -5,12 +5,16 @@
     "terminal.integrated.fontFamily": "Menlo for Powerline",
     "vim.vimrc.enable": true,
     "vim.useSystemClipboard": true,
-
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-        "before": [",", "r"],
-        // "before": ["<C-f>"],
-        "commands": ["editor.action.rename"]
+            "before": [
+                ",",
+                "r"
+            ],
+            // "before": ["<C-f>"],
+            "commands": [
+                "editor.action.rename"
+            ]
         }
         // {
         // // "before": ["<leader>", "f"],
@@ -28,14 +32,16 @@
     "editor.minimap.enabled": false,
     "editor.hideCursorInOverviewRuler": true,
     "python.analysis.indexing": true,
-    "python.formatting.blackArgs": ["-l 88"],
+    "python.formatting.blackArgs": [
+        "-l 88"
+    ],
     "editor.lineNumbers": "off",
     "window.zoomLevel": 2,
     "python.languageServer": "Pylance",
     "terminal.integrated.profiles.osx": {
         "my-tmux": {
-        "path": "/Users/henighan/dotfiles/vscode/tmux.sh",
-        "args": []
+            "path": "/Users/henighan/dotfiles/vscode/tmux.sh",
+            "args": []
         }
     },
     "terminal.integrated.defaultProfile.osx": "my-tmux",
@@ -44,5 +50,7 @@
     "editor.formatOnSave": true,
     "terminal.integrated.inheritEnv": false,
     "redhat.telemetry.enabled": false,
-    "workbench.colorTheme": "Default Light+"
+    "workbench.preferredLightColorTheme": "Default Light+",
+    "workbench.preferredDarkColorTheme": "Default Dark+",
+    "window.autoDetectColorScheme": true
 }
