@@ -59,7 +59,7 @@ Note we used https. We will switch to ssh later.
 
 # Install brewfile
 ```bash
-sudo brew bundle install --file=~/dotfiles/Brewfile
+brew bundle install --file=~/dotfiles/Brewfile
 ```
 This’ll install all the things listed in the above brewfile. I find this magical.
 Some package installations may fail, in which case it’ll say so and try to tell you what went wrong. Google and try to fix.
