@@ -166,7 +166,11 @@ dedup () {
 }
 # dark-mode compatible bat. Bat is like cat but with nicer colors
 dat() {
-    bat --theme=$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo default || echo GitHub) $1
+    bat --theme=$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo default || echo GitHub) $@
+}
+# use for nicer less with colors
+dess() {
+    dat -f $1 | less -r
 }
 # exa for nice ls -l output
 alias ll="exa -lbhFa --git -s modified"
