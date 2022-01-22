@@ -71,6 +71,7 @@ setopt sharehistory
 ### Aliases
 alias ss='source ~/.zshrc'
 alias watch='watch ' # so we can watch aliases
+alias pserve="python3 -m http.server"
 
 ### Some git+github aliases
 # for quickly creating new pull request
