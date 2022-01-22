@@ -40,7 +40,7 @@
     "python.languageServer": "Pylance",
     "terminal.integrated.profiles.osx": {
         "my-tmux": {
-            "path": "/Users/henighan/dotfiles/vscode/tmux.sh",
+            "path": "${env:HOME}/dotfiles/vscode/tmux.sh",
             "args": []
         }
     },
