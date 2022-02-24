@@ -178,6 +178,9 @@ dess() {
 alias ll="exa -lbhFa --git -s modified"
 alias etree="exa --tree --color=always | less -R"
 
+lsearch () {
+    rg --color=always --column --line-number --no-heading . | fzf --ansi --delimiter : --preview 'bat --theme=$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo default || echo GitHub) --color=always {1} --highlight-line {2}' --preview-window 'up,60%,border-bottom,+{2}+3/3,~3'
+}
 
 # list files which are committed but haven't been pushed
 listnotpushed () {
