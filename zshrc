@@ -130,6 +130,7 @@ alias kx=kubectx # https://github.com/ahmetb/kubectx
 # alias c='git branch | fzf | xargs git checkout'
 # sendkeys version of the above fzf git things, so they show up in my history
 alias fa='git ls-files -m -o --exclude-standard | fzf -m | oneline | xargs echo "git add $*" | sendkeys'
+alias pa='git ls-files -m -o --exclude-standard | fzf -m | oneline | xargs echo "git add -p $*" | sendkeys'
 alias fr='git ls-files -m --exclude-standard | fzf -m | oneline | xargs echo "git checkout $*" | sendkeys'
 # alias bls='git branch | cat'
 alias bls="git for-each-ref --color=always --sort=committerdate refs/heads/ --format='%(HEAD) %(color:white)%(refname:short)%(color:reset) - %(color:yellow)%(contents:subject)%(color:reset) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
