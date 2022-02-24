@@ -31,6 +31,7 @@ brew "mono"
 brew "go"
 brew "nodejs"
 brew "gh"
+brew "ripgrep"
 
 # GUI MacOS Applications
 cask "basictex"
