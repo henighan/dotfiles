@@ -101,6 +101,15 @@ iopen () {
     gh issue list | fzf | awk '{print $1}' | xargs gh issue view --web
 }
 alias icreate='gh issue create'
+copypatch () {
+    git diff | pbcopy
+}
+savepatch () {
+    TMPPATH="$HOME/Downloads/henighan.patch"
+    git diff > $TMPPATH
+    echo $TMPPATH | pbcopy
+    echo "Patch path now in clipboard $TMPPATH"
+}
 
 # open current repo in browser
 alias brepo='gh repo view --web'
