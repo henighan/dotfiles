@@ -172,6 +172,9 @@ gcol () {
 # collapse multiple spaces into one space
 alias onespace="tr -s ' '"
 # remove duplicate lines
+lower () {
+    tr '[:upper:]' '[:lower:]'
+}
 dedup () {
     awk '!seen[$0]++'
 }
