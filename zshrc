@@ -87,7 +87,7 @@ propen () {
 }
 # checkout the branch of another pr, selected with fzf
 prcheckout () {
-    branch=$(gh pr list | fzf | awk '{print $(NF-1)}')
+    branch=$(gh pr list | fzf | awk '{print $(NF-5)}')
     if ! git checkout $branch; then
         git fetch origin
         git checkout $branch
@@ -118,6 +118,7 @@ alias bbranch='gh repo view --web --branch $(git rev-parse --abbrev-ref HEAD)'
 alias s='git status'
 alias ga='git add'
 alias unstage='git reset'
+alias amendcommit='git commit --amend --no-edit'
 
 # kubernetes
 # zshell autocomplete
@@ -145,7 +146,7 @@ alias fr='git ls-files -m --exclude-standard | fzf -m | oneline | xargs echo "gi
 # alias bls='git branch | cat'
 alias bls="git for-each-ref --color=always --sort=committerdate refs/heads/ --format='%(HEAD) %(color:white)%(refname:short)%(color:reset) - %(color:yellow)%(contents:subject)%(color:reset) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias c='git branch | fzf | xargs echo "git checkout $1" | sendkeys'
-alias checkout='bls --color=always | fzf --ansi --tac | xargs echo | cut -d " " -f 1 | xargs echo "git checkout $1" | sendkeys'
+alias checkout='bls --color=always | fzf --ansi --tac | squeezespace | cut -d " " -f 1 | xargs echo "git checkout $1" | sendkeys'
 alias pull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias push='git push origin $(git rev-parse --abbrev-ref HEAD)'
 alias emptycommit='git commit --allow-empty -m "empty commit"'
@@ -183,6 +184,9 @@ dedup () {
 dat() {
     bat --theme=$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo default || echo GitHub) $@
 }
+function daml {
+    dat -l yaml
+}
 # use for nicer less with colors
 dess() {
     dat -f $1 | less -r
@@ -208,8 +212,18 @@ pp () {
         echo "success"
     else
         listnotpushed | oneline | xargs git add
-        mit "pre commit"
-        push
+        git commit --amend --no-edit
+        if push; then
+            echo "success"
+        else
+            listnotpushed | oneline | xargs git add
+            git commit --amend --no-edit
+            if push; then
+                echo "success"
+            else
+                echo "pushing did not succeed. Please check for precommit errors above"
+            fi
+        fi
     fi
 }
 
