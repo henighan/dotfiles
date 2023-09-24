@@ -121,7 +121,7 @@ nnoremap ,py :-1read $HOME/.vim/.python_skeleton.py<CR>:4<CR>i
 nnoremap ,sh :-1read $HOME/.vim/.bash_skeleton.sh<CR>:3<CR>i
 " python print variable
 nnoremap ,e yiwoprint(f"{<Esc>pa=}")<Esc>
-nnoremap ,i yiwoinfo(f"{<Esc>pa=}")<Esc>
+nnoremap ,i yiwolog.info(f"{<Esc>pa=}")
 vmap ,e yoprint(f"{<Esc>pa=}")<Esc>
 " break out definition of kwarg
 nnoremap ,b byt,[(O<Esc>p^f=cl = <Esc>bb<c-o>yiwf=pldt,[(k$

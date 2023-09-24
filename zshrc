@@ -89,7 +89,7 @@ propen () {
 prcheckout () {
     branch=$(gh pr list | fzf | awk '{print $(NF-5)}')
     if ! git checkout $branch; then
-        git fetch origin
+        git fetch origin $branch
         git checkout $branch
     fi
 }
@@ -101,7 +101,7 @@ iopen () {
     gh issue list | fzf | awk '{print $1}' | xargs gh issue view --web
 }
 alias icreate='gh issue create'
-alias cbranch="git rev-parse --abbrev-ref HEAD | oneline | pbcopy"
+alias cbranch="git rev-parse --abbrev-ref HEAD | oneline | tr -d '[:space:]' | pbcopy"
 copypatch () {
     git diff | pbcopy
 }
