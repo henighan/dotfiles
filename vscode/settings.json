@@ -1,104 +1,106 @@
 {
-  "editor.autoClosingQuotes": "never",
-  "editor.autoClosingBrackets": "never",
-  "terminal.integrated.inheritEnv": false,
-  "telemetry.telemetryLevel": "off",
-  "terminal.external.osxExec": "iTerm.app",
-  "terminal.integrated.fontFamily": "MesloLGS NF",
-  "python.analysis.inlayHints.variableTypes": true,
-  "python.analysis.inlayHints.functionReturnTypes": true,
-  "python.analysis.inlayHints.pytestParameters": true,
-  "editor.inlayHints.enabled": "onUnlessPressed",
-  "vim.vimrc.enable": true,
-  "vim.useSystemClipboard": true,
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [",", "r"],
-      "commands": ["editor.action.rename"]
+    "editor.autoClosingQuotes": "never",
+    "editor.autoClosingBrackets": "never",
+    "terminal.integrated.inheritEnv": false,
+    "telemetry.telemetryLevel": "off",
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.pytestParameters": true,
+    "editor.inlayHints.enabled": "onUnlessPressed",
+    "vim.vimrc.enable": true,
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [",", "r"],
+            "commands": ["editor.action.rename"]
+        },
+        {
+            "before": [",", "f"],
+            "commands": ["editor.action.refactor"]
+        }
+    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
     },
-    {
-      "before": [",", "f"],
-      "commands": ["editor.action.refactor"]
-    }
-  ],
-  "workbench.editorAssociations": {
-    "*.ipynb": "jupyter-notebook"
-  },
-  "notebook.cellToolbarLocation": {
-    "default": "right",
-    "jupyter-notebook": "left"
-  },
-  "editor.minimap.enabled": false,
-  "editor.hideCursorInOverviewRuler": true,
-  "python.analysis.indexing": true,
-  "python.languageServer": "Pylance",
-  "python.formatting.blackArgs": ["-l 88"],
-  "editor.lineNumbers": "off",
-  "window.zoomLevel": 2,
-  "terminal.integrated.profiles.osx": {
-    "my-tmux": {
-      "path": "${env:HOME}/dotfiles/vscode/tmux.sh",
-      "args": []
-    }
-  },
-  "terminal.integrated.defaultProfile.osx": "my-tmux",
-  "terminal.integrated.allowChords": false,
-  "python.formatting.provider": "black",
-  "editor.formatOnSave": true,
-  "redhat.telemetry.enabled": false,
-  "workbench.preferredLightColorTheme": "Default Light+",
-  "workbench.preferredDarkColorTheme": "Default Dark+",
-  "window.autoDetectColorScheme": true,
-  "workbench.colorTheme": "Default Dark+",
-  "breadcrumbs.enabled": false,
-  "remote.SSH.defaultExtensions": [
-    "amodio.tsl-problem-matcher",
-    "dbaeumer.vscode-eslint",
-    "eamodio.gitlens",
-    "esbenp.prettier-vscode",
-    "ms-python.python",
-    "ms-python.vscode-pylance",
-    "ms-toolsai.jupyter",
-    "ms-toolsai.jupyter-keymap",
-    "ms-toolsai.jupyter-renderers",
-    "ms-toolsai.vscode-jupyter-cell-tags",
-    "ms-toolsai.vscode-jupyter-slideshow",
-    "ms-vscode-remote.remote-containers",
-    "ms-vscode-remote.remote-ssh",
-    "ms-vscode-remote.remote-ssh-edit",
-    "ms-vscode-remote.remote-wsl",
-    "ms-vscode-remote.vscode-remote-extensionpack",
-    "ms-vscode.remote-explorer",
-    "ms-vscode.remote-server",
-    "redhat.vscode-yaml",
-    "usernamehw.errorlens",
-    "vscodevim.vim"
-  ],
-  "_coo_generated.remote.SSH.defaultExtensions": [
-    "amodio.tsl-problem-matcher",
-    "dbaeumer.vscode-eslint",
-    "eamodio.gitlens",
-    "esbenp.prettier-vscode",
-    "ms-python.python",
-    "ms-python.vscode-pylance",
-    "ms-toolsai.jupyter",
-    "ms-toolsai.jupyter-keymap",
-    "ms-toolsai.jupyter-renderers",
-    "ms-toolsai.vscode-jupyter-cell-tags",
-    "ms-toolsai.vscode-jupyter-slideshow",
-    "ms-vscode-remote.remote-containers",
-    "ms-vscode-remote.remote-ssh",
-    "ms-vscode-remote.remote-ssh-edit",
-    "ms-vscode-remote.remote-wsl",
-    "ms-vscode-remote.vscode-remote-extensionpack",
-    "ms-vscode.remote-explorer",
-    "ms-vscode.remote-server",
-    "redhat.vscode-yaml",
-    "usernamehw.errorlens",
-    "vscodevim.vim"
-  ],
-  "remote.SSH.serverInstallPath": {
-    "h0": "/root/code",
-    "h1": "/root/code"
-  }
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "editor.minimap.enabled": false,
+    "editor.hideCursorInOverviewRuler": true,
+    "python.analysis.indexing": true,
+    "python.languageServer": "Pylance",
+    "python.formatting.blackArgs": ["-l 88"],
+    "editor.lineNumbers": "off",
+    "window.zoomLevel": 2,
+    "terminal.integrated.profiles.osx": {
+        "my-tmux": {
+            "path": "${env:HOME}/code/dotfiles/vscode/tmux.sh",
+            "args": []
+        }
+    },
+    "terminal.integrated.defaultProfile.osx": "my-tmux",
+    "terminal.integrated.allowChords": false,
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "redhat.telemetry.enabled": false,
+    "workbench.preferredLightColorTheme": "Default Light+",
+    "workbench.preferredDarkColorTheme": "Default Dark+",
+    "window.autoDetectColorScheme": true,
+    "workbench.colorTheme": "Default Dark+",
+    "breadcrumbs.enabled": false,
+    "remote.SSH.defaultExtensions": [
+        "amodio.tsl-problem-matcher",
+        "dbaeumer.vscode-eslint",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
+        "ms-toolsai.vscode-jupyter-cell-tags",
+        "ms-toolsai.vscode-jupyter-slideshow",
+        "ms-vscode-remote.remote-containers",
+        "ms-vscode-remote.remote-ssh",
+        "ms-vscode-remote.remote-ssh-edit",
+        "ms-vscode-remote.remote-wsl",
+        "ms-vscode-remote.vscode-remote-extensionpack",
+        "ms-vscode.remote-explorer",
+        "ms-vscode.remote-server",
+        "redhat.vscode-yaml",
+        "usernamehw.errorlens",
+        "vscodevim.vim"
+    ],
+    "_coo_generated.remote.SSH.defaultExtensions": [
+        "amodio.tsl-problem-matcher",
+        "dbaeumer.vscode-eslint",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
+        "ms-toolsai.vscode-jupyter-cell-tags",
+        "ms-toolsai.vscode-jupyter-slideshow",
+        "ms-vscode-remote.remote-containers",
+        "ms-vscode-remote.remote-ssh",
+        "ms-vscode-remote.remote-ssh-edit",
+        "ms-vscode-remote.remote-wsl",
+        "ms-vscode-remote.vscode-remote-extensionpack",
+        "ms-vscode.remote-explorer",
+        "ms-vscode.remote-server",
+        "redhat.vscode-yaml",
+        "usernamehw.errorlens",
+        "vscodevim.vim"
+    ],
+    "remote.SSH.serverInstallPath": {
+        "h0": "/root/code",
+        "h1": "/root/code"
+    },
+    "terminal.integrated.copyOnSelection": true,
+    "search.globalFindClipboard": true
 }

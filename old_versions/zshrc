@@ -1,3 +1,34 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# export CLOUDSDK_PYTHON="/usr/local/opt/python@3.8/libexec/bin/python"
+# source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+# source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
+### zplug ####
+# export ZPLUG_HOME=/usr/local/opt/zplug
+# source $ZPLUG_HOME/init.zsh
+# zplug romkatv/powerlevel10k, as:theme, depth:1
+# zplug "kutsan/zsh-system-clipboard", depth:1
+# zplug "zsh-users/zsh-syntax-highlighting", defer:2, depth:1
+# # zplug "plugins/vi-mode", from:oh-my-zsh, depth:1
+# # zplug "zsh-users/zsh-autosuggestions", defer:2, depth:1
+# # bindkey '^ ' autosuggest-accept
+# if ! zplug check --verbose; then
+#     printf "Install? [y/N]: "
+#     if read -q; then
+#         echo; zplug install
+#     fi
+# fi
+# zplug load
+### end zplug ###
+
 bindkey "jj" vi-cmd-mode
 # todo: use xclip if on unix
 function vi-yank-pbcopy {
@@ -14,6 +45,34 @@ alias regexgrep='grep -o -E'
 
 # global npm packages don't work without this
 export NODE_PATH=/opt/homebrew/lib/node_modules
+
+
+###### START eval ssh-agent stuff ######
+# stolen from here
+# https://stackoverflow.com/questions/18880024/start-ssh-agent-on-login
+SSH_ENV="$HOME/.ssh/agent-environment"
+
+function start_agent {
+    echo "Initialising new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add;
+}
+
+# Source SSH settings, if applicable
+
+# if [ -f "${SSH_ENV}" ]; then
+#     . "${SSH_ENV}" > /dev/null
+#     #ps ${SSH_AGENT_PID} doesn't work under cywgin
+#     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+#         start_agent;
+#     }
+# else
+#     start_agent;
+# fi
+###### END eval ssh-agent stuff ######
 
 # shared terminal history across terminals
 setopt inc_append_history
