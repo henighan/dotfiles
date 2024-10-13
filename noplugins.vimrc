@@ -42,6 +42,9 @@ map Y y$
 " improve up down movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
+" Move line up and down
+" nmap <C-n> :m +1<CR>
+" nmap <C-p> :m -2<CR>
 
 "inoremap <C-l> <Esc>yyppkkI<<Esc>A><Esc>jI<tab><Esc>ld$jI</<Esc>ea> <Esc>DkA
 "will show what I'm typing in lower left

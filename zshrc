@@ -2,7 +2,7 @@ bindkey "jj" vi-cmd-mode
 # todo: use xclip if on unix
 function vi-yank-pbcopy {
     zle vi-yank
-   echo "$CUTBUFFER" | tr -d '\n'| pbcopy
+    echo "$CUTBUFFER" | tr -d '\n'| pbcopy
 }
 zle -N vi-yank-pbcopy
 bindkey -M vicmd 'y' vi-yank-pbcopy
@@ -11,9 +11,6 @@ export LSCOLORS=Gxfxcxdxbxegedabagacad
 alias ls='ls -G'
 
 alias regexgrep='grep -o -E'
-
-# global npm packages don't work without this
-export NODE_PATH=/opt/homebrew/lib/node_modules
 
 # shared terminal history across terminals
 setopt inc_append_history
@@ -71,7 +68,12 @@ alias amendcommit='git commit --amend --no-edit'
 # kubernetes
 # zshell autocomplete
 # https://kubernetes.io/docs/tasks/tools/included/optional-kubectl-configs-zsh/
-source <(kubectl completion zsh)
+# this seems to hang if run multiple times, so I gate it on an env var
+# if [ -z "$KUBECTL_COMPLETION_SOURCED" ]
+# then
+#     source <(kubectl completion zsh)
+#     export KUBECTL_COMPLETION_SOURCED="1"
+# fi
 alias kc=kubectl
 kcyaml () {
     kubectl get "$1" "$2" -o yaml | kubectl neat
@@ -263,9 +265,3 @@ alias tinit="terraform init"
 alias tapply="terraform apply"
 alias tdestroy="terraform destroy"
 alias tplan="terraform plan"
-
-# source fzf key bindings
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# source conda init
-[ -f ~/.conda.zsh ] && source ~/.conda.zsh

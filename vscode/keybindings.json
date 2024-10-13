@@ -7,7 +7,7 @@
     {
         "key": "ctrl+k",
         "command": "workbench.action.toggleMaximizedPanel",
-        "when": "!editorAreaVisible"
+        "when": "!mainEditorAreaVisible"
     },
     {
         "key": "ctrl+k",

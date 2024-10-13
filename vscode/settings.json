@@ -32,8 +32,7 @@
     "editor.hideCursorInOverviewRuler": true,
     "python.analysis.indexing": true,
     "python.languageServer": "Pylance",
-    "python.formatting.blackArgs": ["-l 88"],
-    "editor.lineNumbers": "off",
+    "editor.lineNumbers": "on",
     "window.zoomLevel": 2,
     "terminal.integrated.profiles.osx": {
         "my-tmux": {
@@ -43,19 +42,31 @@
     },
     "terminal.integrated.defaultProfile.osx": "my-tmux",
     "terminal.integrated.allowChords": false,
-    "python.formatting.provider": "black",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    "notebook.formatOnSave.enabled": true,
+    "isort.args": ["--profile", "black"],
     "editor.formatOnSave": true,
     "redhat.telemetry.enabled": false,
     "workbench.preferredLightColorTheme": "Default Light+",
     "workbench.preferredDarkColorTheme": "Default Dark+",
     "window.autoDetectColorScheme": true,
     "workbench.colorTheme": "Default Dark+",
-    "breadcrumbs.enabled": false,
+    "breadcrumbs.enabled": true,
     "remote.SSH.defaultExtensions": [
         "amodio.tsl-problem-matcher",
+        "charliermarsh.ruff",
         "dbaeumer.vscode-eslint",
         "eamodio.gitlens",
         "esbenp.prettier-vscode",
+        "github.vscode-pull-request-github",
+        "ms-python.debugpy",
+        "ms-python.flake8",
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-toolsai.jupyter",
@@ -71,14 +82,18 @@
         "ms-vscode.remote-explorer",
         "ms-vscode.remote-server",
         "redhat.vscode-yaml",
-        "usernamehw.errorlens",
+        "svelte.svelte-vscode",
         "vscodevim.vim"
     ],
     "_coo_generated.remote.SSH.defaultExtensions": [
         "amodio.tsl-problem-matcher",
+        "charliermarsh.ruff",
         "dbaeumer.vscode-eslint",
         "eamodio.gitlens",
         "esbenp.prettier-vscode",
+        "github.vscode-pull-request-github",
+        "ms-python.debugpy",
+        "ms-python.flake8",
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-toolsai.jupyter",
@@ -94,13 +109,13 @@
         "ms-vscode.remote-explorer",
         "ms-vscode.remote-server",
         "redhat.vscode-yaml",
-        "usernamehw.errorlens",
+        "svelte.svelte-vscode",
         "vscodevim.vim"
     ],
-    "remote.SSH.serverInstallPath": {
-        "h0": "/root/code",
-        "h1": "/root/code"
-    },
     "terminal.integrated.copyOnSelection": true,
-    "search.globalFindClipboard": true
+    "search.globalFindClipboard": true,
+    "terminal.integrated.macOptionClickForcesSelection": true,
+    "workbench.editorLargeFileConfirmation": 20,
+    "jupyter.interactiveWindow.creationMode": "perFile",
+    "editor.codeActionsOnSave": {}
 }

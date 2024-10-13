@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # vendored version of tmux-yank
 # https://github.com/tmux-plugins/tmux-yank
-source "$HOME/code/dotfiles/tmux_yank/yank-helpers.sh"
+source "/Users/henighan/code/dotfiles/tmux_yank/yank-helpers.sh"
 
 clipboard_copy_without_newline_command() {
     local copy_command="$1"
@@ -25,4 +25,4 @@ set_copy_mode_bindings() {
 }
 
 set_copy_mode_bindings
-TMUX_LOADED="true"
+TMUX_YANK_LOADED="true"
